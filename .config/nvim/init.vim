@@ -5,7 +5,12 @@ call plug#begin()
 
 " The best git vim plugin. Worth learning to use!
 Plug 'tpope/vim-fugitive'
+" Connects vim-fugitive with github. Important for :GBrowse
 Plug 'tpope/vim-rhubarb'
+" Connects vim-fugitive with sourcehut. Important for :GBrowse to work with
+" sourcehut
+Plug 'https://git.sr.ht/~willdurand/srht.vim'
+" Provides a Ctrl + P - type experience for checking out git branches
 Plug 'stsewd/fzf-checkout.vim'
 
 " Handling surroundings: parens, brackets, quotes
@@ -18,7 +23,7 @@ Plug 'amdt/vim-niji'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 
-" Provides a
+" Provides a tree
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 
@@ -28,6 +33,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x', 'for' : ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
 
 Plug 'Olical/conjure'
+
 
 "filetype plugin on
 "
@@ -53,7 +59,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 nmap <C-P> :GFiles<CR>
 nmap <Leader>p :GFiles<CR>
 
-" ripgrep config: Grep through the files in a git repository
+" ripgrep config: Grep through file content in a git repository
 nmap <C-F> :Rg<CR>
 nmap <Leader>f :Rg<CR>
 
