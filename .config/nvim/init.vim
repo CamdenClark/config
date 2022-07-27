@@ -23,15 +23,22 @@ Plug 'amdt/vim-niji'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 
-" Provides a tree
+" Provides a file browser window in vim. I'm always considering whether or not
+" to nix this, but sometimes it's useful.
 Plug 'preservim/nerdtree'
+
+" Provides a nice helper summary at the bottom of your vim window, with what mode
+" you're in, what line you're on, branch, file, etc.
 Plug 'vim-airline/vim-airline'
 
+" Provides fzf. Both of these lines are separately important!
+" I also use ripgrep and the open buffers search! See the config
+" at the bottom for how I use these.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x', 'for' : ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
-
+" Clojure plugin. Have yet to do much exploring, I just uninstalled
+" vim-fireplace
 Plug 'Olical/conjure'
 
 
@@ -73,15 +80,20 @@ nmap <Leader>gu :Git pull<CR>
 nmap <Leader>gp :Git -c push.default=current push<CR>
 nmap <Leader>gd :Git diff<CR>
 nmap <Leader>gl :Git log<CR>
-nmap <Leader>gb :GBrowse!<CR>
+" This will copy to your clipboard a link to this file in whatever hosted git
+" service you're using. This requires vim-rhubarb for github or the sourcehut
+" plugin found above.
+nmap <Leader>gb :'<,'>GBrowse!<CR>
+vmap <Leader>gb :'<,'>GBrowse!<CR>
+" This uses fzf-checkout to
 nmap <Leader>gc :GBranches checkout<CR>
+
+
+"" TODO Where should the conjure vim keybindings go under leader?
+
 
 " clojure config
 autocmd FileType clojure AutoFormatBuffer cljstyle
 
 " python config
 autocmd FileType python AutoFormatBuffer yapf
-
-" js config
-let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
