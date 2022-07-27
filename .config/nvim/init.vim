@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 
 call plug#begin()
 
@@ -42,16 +42,6 @@ let mapleader = ","
 autocmd VimEnter * NERDTree | wincmd p
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-" clojure config
-autocmd FileType clojure AutoFormatBuffer cljstyle
-
-" python config
-autocmd FileType python AutoFormatBuffer yapf
-
-" js config
-let g:prettier#autoformat = 0
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-
 " ctrl + p config: Fuzzy find a file in a git repository
 nmap <C-P> :GFiles<CR>
 nmap <Leader>p :GFiles<CR>
@@ -64,7 +54,12 @@ nmap <Leader>f :Rg<CR>
 nmap <C-B> :Buffer<CR>
 nmap <Leader>b :Buffer<CR>
 
-set completeopt=menuone,noinsert,noselect
-" Avoid showing extra messages when using completion
-set shortmess+=c
+" clojure config
+autocmd FileType clojure AutoFormatBuffer cljstyle
 
+" python config
+autocmd FileType python AutoFormatBuffer yapf
+
+" js config
+let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
