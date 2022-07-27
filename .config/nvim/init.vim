@@ -3,20 +3,20 @@ filetype off
 
 call plug#begin()
 
-# The best git vim plugin. Worth learning to use!
+" The best git vim plugin. Worth learning to use!
 Plug 'tpope/vim-fugitive'
 
-# Handling surroundings: parens, brackets, quotes
+" Handling surroundings: parens, brackets, quotes
 Plug 'tpope/vim-surround'
-# Rainbow parens
+" Rainbow parens
 Plug 'amdt/vim-niji'
 
-# Autoformatting plugins
-# vim-maktaba is required for vim-codefmt
+" Autoformatting plugins
+" vim-maktaba is required for vim-codefmt
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 
-# Provides a
+" Provides a
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 
