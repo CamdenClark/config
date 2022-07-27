@@ -3,24 +3,29 @@ filetype off
 
 call plug#begin()
 
+# The best git vim plugin. Worth learning to use!
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-surround'
 
+# Handling surroundings: parens, brackets, quotes
+Plug 'tpope/vim-surround'
+# Rainbow parens
+Plug 'amdt/vim-niji'
+
+# Autoformatting plugins
+# vim-maktaba is required for vim-codefmt
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 
-Plug 'amdt/vim-niji'
-
+# Provides a
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'neovim/nvim-lspconfig'
-
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production', 'branch': 'release/0.x', 'for' : ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']}
+
+Plug 'Olical/conjure'
 
 "filetype plugin on
 "
