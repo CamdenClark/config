@@ -5,6 +5,8 @@ call plug#begin()
 
 " The best git vim plugin. Worth learning to use!
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'stsewd/fzf-checkout.vim'
 
 " Handling surroundings: parens, brackets, quotes
 Plug 'tpope/vim-surround'
@@ -58,6 +60,15 @@ nmap <Leader>f :Rg<CR>
 " buffers config: Fuzzy find through all buffers open in vim
 nmap <C-B> :Buffer<CR>
 nmap <Leader>b :Buffer<CR>
+
+" git config: uses vim-fugitive commands
+nmap <Leader>gs :Git<CR>
+nmap <Leader>gu :Git pull<CR>
+nmap <Leader>gp :Git -c push.default=current push<CR>
+nmap <Leader>gd :Git diff<CR>
+nmap <Leader>gl :Git log<CR>
+nmap <Leader>gb :GBrowse!<CR>
+nmap <Leader>gc :GBranches checkout<CR>
 
 " clojure config
 autocmd FileType clojure AutoFormatBuffer cljstyle
