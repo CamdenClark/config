@@ -41,6 +41,14 @@ Plug 'junegunn/fzf.vim'
 " vim-fireplace
 Plug 'Olical/conjure'
 
+" Github copilot
+Plug 'github/copilot.vim'
+
+" coc
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" theme
+Plug 'EdenEast/nightfox.nvim' 
 
 "filetype plugin on
 "
@@ -83,7 +91,7 @@ nmap <Leader>gl :Git log<CR>
 " This will copy to your clipboard a link to this file in whatever hosted git
 " service you're using. This requires vim-rhubarb for github or the sourcehut
 " plugin found above.
-nmap <Leader>gb :'<,'>GBrowse!<CR>
+nmap <Leader>gb :GBrowse!<CR>
 vmap <Leader>gb :'<,'>GBrowse!<CR>
 " This uses fzf-checkout to
 nmap <Leader>gc :GBranches checkout<CR>
@@ -97,3 +105,9 @@ autocmd FileType clojure AutoFormatBuffer cljstyle
 
 " python config
 autocmd FileType python AutoFormatBuffer yapf
+
+" javascript config
+let g:coc_global_extensions = ['coc-tsserver']
+
+" theming
+colorscheme nightfox
