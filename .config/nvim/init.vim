@@ -37,8 +37,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Clojure plugin. Have yet to do much exploring, I just uninstalled
-" vim-fireplace
+" Clojure config
 Plug 'Olical/conjure'
 
 " Github copilot
@@ -49,6 +48,14 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " theme
 Plug 'EdenEast/nightfox.nvim' 
+
+" prettier config for vim
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+
+" golang plugin
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 "filetype plugin on
 "
@@ -63,8 +70,13 @@ Plug 'EdenEast/nightfox.nvim'
 "
 call plug#end()
 
+" general config
+"
 " leader config
 let mapleader = ","
+
+" Enable line numbers
+set number
 
 " nerdtree config
 autocmd VimEnter * NERDTree | wincmd p
@@ -97,7 +109,16 @@ vmap <Leader>gb :'<,'>GBrowse!<CR>
 nmap <Leader>gc :GBranches checkout<CR>
 
 
-"" TODO Where should the conjure vim keybindings go under leader?
+" Using q for 'meta' stuff
+nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
+
+
+" go config
+autocmd FileType go nmap <Leader>ch :GoDoc<CR>
+autocmd FileType go nmap <Leader>cd :GoDef<CR>
+autocmd FileType go nmap <Leader>ct :GoTest<CR>
+autocmd FileType go nmap <Leader>ci :GoImport<space>
+autocmd FileType go nmap <Leader>cr :GoRename<CR>
 
 
 " clojure config
@@ -105,6 +126,16 @@ autocmd FileType clojure AutoFormatBuffer cljstyle
 
 " python config
 autocmd FileType python AutoFormatBuffer yapf
+
+" typescript config
+autocmd FileType typescript,json AutoFormatBuffer prettier
+
+" coc.nvim configuration
+"
+set updatetime=300
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " javascript config
 let g:coc_global_extensions = ['coc-tsserver']
