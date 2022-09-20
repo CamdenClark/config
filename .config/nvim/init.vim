@@ -73,7 +73,8 @@ call plug#end()
 " general config
 "
 " leader config
-let mapleader = ","
+let mapleader = "\<Space>"
+let maplocalleader = ","
 
 " Enable line numbers
 set number
@@ -114,15 +115,17 @@ nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
 
 
 " go config
-autocmd FileType go nmap <Leader>ch :GoDoc<CR>
-autocmd FileType go nmap <Leader>cd :GoDef<CR>
-autocmd FileType go nmap <Leader>ct :GoTest<CR>
-autocmd FileType go nmap <Leader>ci :GoImport<space>
-autocmd FileType go nmap <Leader>cn :GoRename<CR>
+autocmd FileType go nmap <LocalLeader>ch :GoDoc<CR>
+autocmd FileType go nmap <LocalLeader>cd :GoDef<CR>
+autocmd FileType go nmap <LocalLeader>ct :GoTest<CR>
+autocmd FileType go nmap <LocalLeader>ci :GoImport<space>
+autocmd FileType go nmap <LocalLeader>cn :GoRename<CR>
 
 
 " clojure config
 autocmd FileType clojure AutoFormatBuffer cljstyle
+autocmd FileType clojure nmap <LocalLeader>cw :ConjureShadowSelect<Space>
+
 
 " python config
 autocmd FileType python AutoFormatBuffer yapf
@@ -150,10 +153,10 @@ inoremap <silent><expr> <Tab>
 " javascript config
 let g:coc_global_extensions = ['coc-tsserver']
 
-autocmd FileType typescript nmap <Leader>ch <Plug>(coc-definition)
-autocmd FileType typescript nmap <Leader>cr <Plug>(coc-references)
-autocmd FileType typescript nmap <Leader>cr <Plug>(coc-references)
-autocmd FileType typescript nmap <Leader>cn <Plug>(coc-rename)
+autocmd FileType typescript nmap <LocalLeader>ch <Plug>(coc-definition)
+autocmd FileType typescript nmap <LocalLeader>cr <Plug>(coc-references)
+autocmd FileType typescript nmap <LocalLeader>cr <Plug>(coc-references)
+autocmd FileType typescript nmap <LocalLeader>cn <Plug>(coc-rename)
 
 " theming
 colorscheme nightfox
