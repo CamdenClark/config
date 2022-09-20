@@ -118,7 +118,7 @@ autocmd FileType go nmap <Leader>ch :GoDoc<CR>
 autocmd FileType go nmap <Leader>cd :GoDef<CR>
 autocmd FileType go nmap <Leader>ct :GoTest<CR>
 autocmd FileType go nmap <Leader>ci :GoImport<space>
-autocmd FileType go nmap <Leader>cr :GoRename<CR>
+autocmd FileType go nmap <Leader>cn :GoRename<CR>
 
 
 " clojure config
@@ -136,9 +136,24 @@ set updatetime=300
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" use <tab> for trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
 
 " javascript config
 let g:coc_global_extensions = ['coc-tsserver']
+
+autocmd FileType typescript nmap <Leader>ch <Plug>(coc-definition)
+autocmd FileType typescript nmap <Leader>cr <Plug>(coc-references)
+autocmd FileType typescript nmap <Leader>cr <Plug>(coc-references)
+autocmd FileType typescript nmap <Leader>cn <Plug>(coc-rename)
 
 " theming
 colorscheme nightfox
