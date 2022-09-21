@@ -751,7 +751,7 @@ key_bindings:
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
   #- { key: PageUp,    mods: Shift,   mode: ~Alt,        action: ScrollPageUp,  }
-  - { key: T,  mods: Shift|Control,   mode: ~Alt,        action: CreateNewWindow }
+  - { key: T,  mods: Shift|Control,   action: CreateNewWindow }
   #- { key: Home,      mods: Shift,   mode: ~Alt,        action: ScrollToTop,   }
   #- { key: End,       mods: Shift,   mode: ~Alt,        action: ScrollToBottom }
 
