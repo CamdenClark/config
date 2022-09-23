@@ -68,7 +68,12 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plug stuff after this line
 "
+Plug 'Olical/aniseed'
+
+" Plug '~/obsidianlite'
+Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
 call plug#end()
+
 
 " general config
 "
@@ -114,6 +119,10 @@ nmap <Leader>gc :GBranches checkout<CR>
 nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
 
 
+" Using <Leader>z for obsidian/zettelkasten
+nmap <Leader>zd :ObsidianOpenDailyNote<CR>
+nmap <Leader>zk :ObsidianOpenZkNote<CR>
+
 " go config
 autocmd FileType go nmap <LocalLeader>ch :GoDoc<CR>
 autocmd FileType go nmap <LocalLeader>cd :GoDef<CR>
@@ -153,6 +162,8 @@ inoremap <silent><expr> <Tab>
 " javascript config
 let g:coc_global_extensions = ['coc-tsserver']
 
+let g:obsidian_vault = '/home/camden/Dropbox/notes/camden'
+
 autocmd FileType typescript nmap <LocalLeader>ch <Plug>(coc-definition)
 autocmd FileType typescript nmap <LocalLeader>cr <Plug>(coc-references)
 autocmd FileType typescript nmap <LocalLeader>cr <Plug>(coc-references)
@@ -160,3 +171,4 @@ autocmd FileType typescript nmap <LocalLeader>cn <Plug>(coc-rename)
 
 " theming
 colorscheme nightfox
+
