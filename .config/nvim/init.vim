@@ -1,5 +1,6 @@
 set nocompatible
 filetype off
+set completeopt=menu,menuone,noselect
 
 call plug#begin()
 
@@ -43,9 +44,6 @@ Plug 'Olical/conjure'
 " Github copilot
 Plug 'github/copilot.vim'
 
-" coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 " theme
 Plug 'EdenEast/nightfox.nvim' 
 
@@ -56,6 +54,14 @@ Plug 'prettier/vim-prettier', {
 
 " golang plugin
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" cmp
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
 "filetype plugin on
 "
@@ -72,6 +78,8 @@ Plug 'Olical/aniseed'
 
 " Plug '~/obsidianlite'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
+
+Plug '~/freepilotnvim'
 call plug#end()
 
 
@@ -142,27 +150,10 @@ autocmd FileType python AutoFormatBuffer yapf
 " typescript config
 autocmd FileType typescript,json AutoFormatBuffer prettier
 
-" coc.nvim configuration
-"
-set updatetime=300
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" use <tab> for trigger completion and navigate to the next complete item
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-
 " javascript config
 let g:coc_global_extensions = ['coc-tsserver']
 
-let g:obsidian_vault = '/home/camden/Dropbox/notes/camden'
+let g:obsidian_vault = $HOME.'/Dropbox/notes/camden'
 
 autocmd FileType typescript nmap <LocalLeader>ch <Plug>(coc-definition)
 autocmd FileType typescript nmap <LocalLeader>cr <Plug>(coc-references)
@@ -171,4 +162,62 @@ autocmd FileType typescript nmap <LocalLeader>cn <Plug>(coc-rename)
 
 " theming
 colorscheme nightfox
+
+
+
+lua <<EOF
+  -- Set up nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline('/', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    },
+   -- sorting = { comparators = { require('freepilotnvim.main').comparator }}
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+EOF
 
