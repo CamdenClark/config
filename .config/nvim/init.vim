@@ -127,9 +127,19 @@ nmap <Leader>gc :GBranches checkout<CR>
 nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
 
 
+" Obsidian config
+command! -bang ObsidianFiles call fzf#vim#files($HOME.'/Dropbox/notes/camden', <bang>0)
+
 " Using <Leader>z for obsidian/zettelkasten
 nmap <Leader>zd :ObsidianOpenDailyNote<CR>
 nmap <Leader>zk :ObsidianOpenZkNote<CR>
+nmap <Leader>zp :ObsidianFiles<CR>
+
+" Using <Leader>c for system clipboard
+vmap <Leader>cc "+y
+nmap <Leader>cp "+p
+nmap <Leader>cg :GBrowse!<CR>
+vmap <Leader>cg :'<,'>GBrowse!<CR>
 
 " go config
 autocmd FileType go nmap <LocalLeader>ch :GoDoc<CR>
@@ -163,6 +173,9 @@ autocmd FileType typescript nmap <LocalLeader>cn <Plug>(coc-rename)
 " theming
 colorscheme nightfox
 
+
+" testing this
+nmap ; :
 
 
 lua <<EOF
