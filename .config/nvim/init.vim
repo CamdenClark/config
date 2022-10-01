@@ -128,7 +128,7 @@ nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
 
 
 " Obsidian config
-command! -bang ObsidianFiles call fzf#vim#files($HOME.'/Dropbox/notes/camden', <bang>0)
+command! -bang ObsidianFiles call fzf#vim#files($HOME.'/notes/camden', <bang>0)
 
 " Using <Leader>z for obsidian/zettelkasten
 nmap <Leader>zd :ObsidianOpenDailyNote<CR>
