@@ -160,15 +160,9 @@ autocmd FileType python AutoFormatBuffer yapf
 " typescript config
 autocmd FileType typescript,json AutoFormatBuffer prettier
 
-" javascript config
-let g:coc_global_extensions = ['coc-tsserver']
+" Obsidian config
+let g:obsidian_vault = $HOME.'/notes/camden'
 
-let g:obsidian_vault = $HOME.'/Dropbox/notes/camden'
-
-autocmd FileType typescript nmap <LocalLeader>ch <Plug>(coc-definition)
-autocmd FileType typescript nmap <LocalLeader>cr <Plug>(coc-references)
-autocmd FileType typescript nmap <LocalLeader>cr <Plug>(coc-references)
-autocmd FileType typescript nmap <LocalLeader>cn <Plug>(coc-rename)
 
 " theming
 colorscheme nightfox
@@ -187,13 +181,7 @@ lua <<EOF
       -- completion = cmp.config.window.bordered(),
       -- documentation = cmp.config.window.bordered(),
     },
-    mapping = cmp.mapping.preset.insert({
-      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    }),
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'vsnip' }, -- For vsnip users.
