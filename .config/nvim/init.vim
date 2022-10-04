@@ -122,18 +122,23 @@ vmap <Leader>gb :'<,'>GBrowse!<CR>
 " This uses fzf-checkout to
 nmap <Leader>gc :GBranches checkout<CR>
 
-
 " Using q for 'meta' stuff
 nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
 
-
 " Obsidian config
-command! -bang ObsidianFiles call fzf#vim#files($HOME.'/notes/camden', <bang>0)
+let g:obsidian_vault = $HOME.'/notes/camden'
+
+command! -bang ObsidianFiles call fzf#vim#files(g:obsidian_vault, <bang>0)
 
 " Using <Leader>z for obsidian/zettelkasten
 nmap <Leader>zd :ObsidianOpenDailyNote<CR>
 nmap <Leader>zk :ObsidianOpenZkNote<CR>
 nmap <Leader>zp :ObsidianFiles<CR>
+" Now I have a bunch of hardcoded notes for todo items
+nmap <Leader>zw :e ~/notes/camden/Todos/WorkTodos.md<CR>
+nmap <Leader>zz :e ~/notes/camden/Todos/ConfigTodos.md<CR>
+nmap <Leader>zs :e ~/notes/camden/Todos/StudyTodos.md<CR>
+nmap <Leader>zh :e ~/notes/camden/Todos/HomeTodos.md<CR>
 
 " Using <Leader>c for system clipboard
 vmap <Leader>cc "+y
@@ -148,11 +153,9 @@ autocmd FileType go nmap <LocalLeader>ct :GoTest<CR>
 autocmd FileType go nmap <LocalLeader>ci :GoImport<space>
 autocmd FileType go nmap <LocalLeader>cn :GoRename<CR>
 
-
 " clojure config
 autocmd FileType clojure AutoFormatBuffer cljstyle
 autocmd FileType clojure nmap <LocalLeader>cw :ConjureShadowSelect<Space>
-
 
 " python config
 autocmd FileType python AutoFormatBuffer yapf
@@ -160,18 +163,14 @@ autocmd FileType python AutoFormatBuffer yapf
 " typescript config
 autocmd FileType typescript,json AutoFormatBuffer prettier
 
-" Obsidian config
-let g:obsidian_vault = $HOME.'/notes/camden'
-
-
 " theming
 colorscheme nightfox
-
 
 " testing this
 nmap ; :
 
 
+" nvim-cmp autocompletion stuff
 lua <<EOF
   -- Set up nvim-cmp.
   local cmp = require'cmp'
