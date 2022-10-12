@@ -19,6 +19,9 @@ Plug 'tpope/vim-surround'
 " Rainbow parens
 Plug 'amdt/vim-niji'
 
+" Helpers for common unix commands
+Plug 'tpope/vim-eunuch'
+
 " Autoformatting plugins
 " vim-maktaba is required for vim-codefmt
 Plug 'google/vim-maktaba'
@@ -79,7 +82,6 @@ Plug 'Olical/aniseed'
 " Plug '~/obsidianlite'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
 
-Plug '~/freepilotnvim'
 call plug#end()
 
 
@@ -146,6 +148,11 @@ nmap <Leader>cp "+p
 nmap <Leader>cg :GBrowse!<CR>
 vmap <Leader>cg :'<,'>GBrowse!<CR>
 
+" filesystem config
+nmap <Leader>dd :Delete<CR>
+nmap <Leader>dm :Move<space>
+nmap <Leader>dc :Copy<space>
+
 " go config
 autocmd FileType go nmap <LocalLeader>ch :GoDoc<CR>
 autocmd FileType go nmap <LocalLeader>cd :GoDef<CR>
@@ -166,13 +173,25 @@ autocmd FileType typescript,json AutoFormatBuffer prettier
 " theming
 colorscheme nightfox
 
+autocmd FileType typescript set signcolumn=yes
+
 " testing this
 nmap ; :
 
 
 " nvim-cmp autocompletion stuff
 lua <<EOF
+
+local lsp_flags = {
+  -- This is the default in Nvim 0.7+
+  debounce_text_changes = 150,
+}
+require('lspconfig')['tsserver'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
   -- Set up nvim-cmp.
+
   local cmp = require'cmp'
 
   cmp.setup({
@@ -180,13 +199,14 @@ lua <<EOF
       -- completion = cmp.config.window.bordered(),
       -- documentation = cmp.config.window.bordered(),
     },
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = {
+	['<Tab>'] = cmp.mapping.confirm({select = true}),
+	['<Up>'] = cmp.mapping.select_prev_item(),
+	['<Down>'] = cmp.mapping.select_next_item(),
+    },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
+      { name = 'vsnip' },
     }, {
       { name = 'buffer' },
     })
@@ -207,7 +227,6 @@ lua <<EOF
     sources = {
       { name = 'buffer' }
     },
-   -- sorting = { comparators = { require('freepilotnvim.main').comparator }}
   })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
