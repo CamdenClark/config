@@ -182,13 +182,30 @@ nmap ; :
 " nvim-cmp autocompletion stuff
 lua <<EOF
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+local on_attach = function(client, bufnr)
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', '<localleader>gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', '<localleader>gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', '<localleader>gh', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<localleader>gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<localleader>gt', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<localleader>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<localleader>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<localleader>gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<localleader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+end
 require('lspconfig')['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
+    capabilities = capabilities
 }
   -- Set up nvim-cmp.
 
@@ -196,8 +213,8 @@ require('lspconfig')['tsserver'].setup{
 
   cmp.setup({
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     mapping = {
 	['<Tab>'] = cmp.mapping.confirm({select = true}),
