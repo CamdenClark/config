@@ -33,7 +33,9 @@ Plug 'preservim/nerdtree'
 
 " Provides a nice helper summary at the bottom of your vim window, with what mode
 " you're in, what line you're on, branch, file, etc.
-Plug 'vim-airline/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
 
 " Provides fzf. Both of these lines are separately important!
 " I also use ripgrep and the open buffers search! See the config
@@ -150,6 +152,7 @@ vmap <Leader>cg :'<,'>GBrowse!<CR>
 
 " filesystem config
 nmap <Leader>dd :Delete<CR>
+nmap <Leader>dr :Remove<CR>
 nmap <Leader>dm :Move<space>
 nmap <Leader>dc :Copy<space>
 
@@ -181,6 +184,46 @@ nmap ; :
 
 " nvim-cmp autocompletion stuff
 lua <<EOF
+require('lualine').setup {
+  options = {
+    icons_enabled = false,
+    theme = 'auto',
+    component_separators = '',
+    section_separators = '',
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {'filetype'},
+    lualine_y = {},
+    lualine_z = {'location'}
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {}
+}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -224,9 +267,12 @@ require('lspconfig')['pyright'].setup{
       documentation = cmp.config.window.bordered(),
     },
     mapping = {
-	['<Tab>'] = cmp.mapping.confirm({select = true}),
+	['<Tab>'] = cmp.mapping.confirm({ select = true }),
+	['<CR>'] = cmp.mapping.confirm({ select = true }),
 	['<Up>'] = cmp.mapping.select_prev_item(),
+	['<C-k>'] = cmp.mapping.select_prev_item(),
 	['<Down>'] = cmp.mapping.select_next_item(),
+	['<C-j>'] = cmp.mapping.select_next_item(),
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
