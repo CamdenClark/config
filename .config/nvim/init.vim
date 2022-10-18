@@ -37,6 +37,10 @@ Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 
+
+Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.*'}
+Plug 'saadparwaiz1/cmp_luasnip'
+
 " Provides fzf. Both of these lines are separately important!
 " I also use ripgrep and the open buffers search! See the config
 " at the bottom for how I use these.
@@ -257,17 +261,33 @@ require('lspconfig')['pyright'].setup{
 }
 
   -- Set up nvim-cmp.
+  require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippets"})
+
+  local luasnip = require("luasnip")
 
 
   local cmp = require'cmp'
 
   cmp.setup({
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      end,
+    },
     window = {
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
     mapping = {
-	['<Tab>'] = cmp.mapping.confirm({ select = true }),
+	['<Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+	    cmp.confirm({ select = true })
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
 	['<CR>'] = cmp.mapping.confirm({ select = true }),
 	['<Up>'] = cmp.mapping.select_prev_item(),
 	['<C-k>'] = cmp.mapping.select_prev_item(),
@@ -276,12 +296,18 @@ require('lspconfig')['pyright'].setup{
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' },
-    }, {
-      { name = 'buffer' },
+      { name = 'luasnip' },
     })
   })
-
+--- function(fallback)
+--	  if cmp.visible() then
+--	    cmp.mapping.confirm({ select = true }),
+--	  elseif luasnip.expand_or_jumpable() then
+--	    luasnip.expand_or_jump()
+--	  else
+--	    fallback()
+--	  end
+--	end
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
