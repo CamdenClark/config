@@ -165,6 +165,14 @@ nmap <Leader>dr :Remove<CR>
 nmap <Leader>dm :Move<space>
 nmap <Leader>dc :Copy<space>
 
+" window config
+nmap <Leader>wv :vsplit<CR>
+nmap <Leader>wh :split<CR>
+nmap <Leader>wd :hide<CR>
+nmap <Leader>wn <C-w><C-w>
+nmap <Leader>wt :NERDTreeFocus<CR>
+nmap <Leader>wr :NERDTreeRefreshRoot<CR>
+
 " go config
 autocmd FileType go nmap <LocalLeader>ch :GoDoc<CR>
 autocmd FileType go nmap <LocalLeader>cd :GoDef<CR>
