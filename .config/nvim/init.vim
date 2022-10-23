@@ -48,6 +48,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Clojure config
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'Olical/conjure'
 
 " Github copilot
@@ -66,6 +67,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " cmp
 Plug 'neovim/nvim-lspconfig'
+Plug 'PaterJason/cmp-conjure'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -87,6 +89,9 @@ Plug 'Olical/aniseed'
 
 " Plug '~/obsidianlite'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
+
+" Bash utilities
+Plug 'https://gitlab.com/HiPhish/awk-ward.nvim'
 
 call plug#end()
 
@@ -180,7 +185,7 @@ autocmd FileType typescript,json AutoFormatBuffer prettier
 " theming
 colorscheme nightfox
 
-autocmd FileType typescript set signcolumn=yes
+autocmd FileType python,typescript set signcolumn=yes
 
 " testing this
 nmap ; :
@@ -249,17 +254,18 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<localleader>gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<localleader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
-require('lspconfig')['tsserver'].setup{
+local lspconfig = require('lspconfig')
+lspconfig['tsserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities
 }
-require('lspconfig')['pyright'].setup{
+lspconfig['pyright'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities
 }
-
+lspconfig.solc.setup{}
   -- Set up nvim-cmp.
   require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippets"})
 
@@ -271,7 +277,7 @@ require('lspconfig')['pyright'].setup{
   cmp.setup({
     snippet = {
       expand = function(args)
-        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        luasnip.lsp_expand(args.body) -- For `luasnip` users.
       end,
     },
     window = {
@@ -297,17 +303,9 @@ require('lspconfig')['pyright'].setup{
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
       { name = 'luasnip' },
+      { name = 'conjure' },
     })
   })
---- function(fallback)
---	  if cmp.visible() then
---	    cmp.mapping.confirm({ select = true }),
---	  elseif luasnip.expand_or_jumpable() then
---	    luasnip.expand_or_jump()
---	  else
---	    fallback()
---	  end
---	end
   -- Set configuration for specific filetype.
   cmp.setup.filetype('gitcommit', {
     sources = cmp.config.sources({
