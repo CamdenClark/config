@@ -90,9 +90,6 @@ Plug 'Olical/aniseed'
 " Plug '~/obsidianlite'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
 
-" Bash utilities
-Plug 'https://gitlab.com/HiPhish/awk-ward.nvim'
-
 call plug#end()
 
 
@@ -201,46 +198,7 @@ nmap ; :
 
 " nvim-cmp autocompletion stuff
 lua <<EOF
-require('lualine').setup {
-  options = {
-    icons_enabled = false,
-    theme = 'auto',
-    component_separators = '',
-    section_separators = '',
-    disabled_filetypes = {
-      statusline = {},
-      winbar = {},
-    },
-    ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
-    refresh = {
-      statusline = 1000,
-      tabline = 1000,
-      winbar = 1000,
-    }
-  },
-  sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'filetype'},
-    lualine_y = {},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {},
-  winbar = {},
-  inactive_winbar = {},
-  extensions = {}
-}
+require('lualine_config')
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
@@ -280,12 +238,12 @@ lspconfig.solc.setup{}
   local luasnip = require("luasnip")
 
 
-  local cmp = require'cmp'
+  local cmp = require("cmp")
 
   cmp.setup({
     snippet = {
       expand = function(args)
-        luasnip.lsp_expand(args.body) -- For `luasnip` users.
+        luasnip.lsp_expand(args.body)
       end,
     },
     window = {
@@ -333,7 +291,11 @@ lspconfig.solc.setup{}
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
+    mapping = {
+	['<Tab>'] = cmp.mapping.confirm({ select = true }),
+	['<CR>'] = cmp.mapping.confirm({ select = true }),
+	    
+	    },
     sources = cmp.config.sources({
       { name = 'path' }
     }, {
