@@ -51,6 +51,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'Olical/conjure'
 
+Plug 'gpanders/nvim-parinfer'
+
 " Github copilot
 Plug 'github/copilot.vim'
 
