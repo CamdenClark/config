@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
-
+export NOTES="$HOME/notes/camden"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

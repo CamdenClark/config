@@ -252,8 +252,13 @@ lspconfig.solc.setup{}
       completion = cmp.config.window.bordered(),
       documentation = cmp.config.window.bordered(),
     },
+    experimental = {
+      ghost_text = true
+    },
     mapping = {
 	['<Tab>'] = cmp.mapping(function(fallback)
+
+
           if cmp.visible() then
 	    cmp.confirm({ select = true })
           elseif luasnip.expand_or_jumpable() then
@@ -293,16 +298,8 @@ lspconfig.solc.setup{}
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
-    mapping = {
-	['<Tab>'] = cmp.mapping.confirm({ select = true }),
-	['<CR>'] = cmp.mapping.confirm({ select = true }),
-	    
-	    },
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    })
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({ { name = 'cmdline' }})
   })
 EOF
 
