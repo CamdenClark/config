@@ -1,4 +1,5 @@
 set nocompatible
+
 filetype off
 set completeopt=menu,menuone,noselect
 
@@ -151,6 +152,9 @@ nmap <Leader>zw :e ~/notes/camden/Todos/WorkTodos.md<CR>
 nmap <Leader>zz :e ~/notes/camden/Todos/ConfigTodos.md<CR>
 nmap <Leader>zs :e ~/notes/camden/Todos/StudyTodos.md<CR>
 nmap <Leader>zh :e ~/notes/camden/Todos/HomeTodos.md<CR>
+" Some keys that help me with my `Concepts` folder in notes
+nmap <Leader>zm :Move ~/notes/camden/Concepts/
+nmap <Leader>zc :! add-concept<space>
 
 " Using <Leader>c for system clipboard
 vmap <Leader>cc "+y
@@ -257,10 +261,9 @@ lspconfig.solc.setup{}
     },
     mapping = {
 	['<Tab>'] = cmp.mapping(function(fallback)
-
-
           if cmp.visible() then
 	    cmp.confirm({ select = true })
+	    cmp.complete()
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           else
@@ -298,8 +301,27 @@ lspconfig.solc.setup{}
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({ { name = 'cmdline' }})
+    mapping = {
+	['<Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+	    print("test")
+	    cmp.confirm({ select = true }, function()
+	      cmp.reset()
+	      cmp.complete()
+	    end)
+          elseif luasnip.expand_or_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+	['<CR>'] = cmp.mapping.confirm({ select = true }),
+	['<Up>'] = cmp.mapping.select_prev_item(),
+	['<C-k>'] = cmp.mapping.select_prev_item(),
+	['<Down>'] = cmp.mapping.select_next_item(),
+	['<C-j>'] = cmp.mapping.select_next_item(),
+    },
+    sources = cmp.config.sources({ { name = 'cmdline' }, { name = 'path', options = { trailing_slash = true }}})
   })
 EOF
 

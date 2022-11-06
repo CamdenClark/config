@@ -1,4 +1,5 @@
 export PATH=$HOME/anaconda3/bin:$PATH
+export PATH=$HOME/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
