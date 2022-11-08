@@ -38,7 +38,6 @@ Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 
-
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.*'}
 Plug 'saadparwaiz1/cmp_luasnip'
 
@@ -65,8 +64,6 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
-" golang plugin
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " cmp
 Plug 'neovim/nvim-lspconfig'
@@ -237,7 +234,16 @@ lspconfig['pyright'].setup{
     flags = lsp_flags,
     capabilities = capabilities
 }
-lspconfig.solc.setup{}
+lspconfig.solc.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities
+}
+lspconfig.gopls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities
+}
   -- Set up nvim-cmp.
   require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippets"})
 
