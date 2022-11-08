@@ -193,7 +193,7 @@ autocmd FileType typescript,json AutoFormatBuffer prettier
 " theming
 colorscheme nightfox
 
-autocmd FileType python,typescript set signcolumn=yes
+autocmd FileType clojure,go,python,typescript set signcolumn=yes
 
 " testing this
 nmap ; :
@@ -240,6 +240,11 @@ lspconfig.solc.setup{
     capabilities = capabilities
 }
 lspconfig.gopls.setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities
+}
+lspconfig.clojure_lsp.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities
