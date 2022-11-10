@@ -38,6 +38,8 @@ Plug 'nvim-lualine/lualine.nvim'
 " If you want to have icons in your statusline choose one of these
 Plug 'kyazdani42/nvim-web-devicons'
 
+Plug 'folke/trouble.nvim'
+
 Plug 'L3MON4D3/LuaSnip', {'tag': 'v1.*'}
 Plug 'saadparwaiz1/cmp_luasnip'
 
@@ -55,6 +57,9 @@ Plug 'gpanders/nvim-parinfer'
 
 " Github copilot
 Plug 'github/copilot.vim'
+
+" Golang support
+Plug 'ray-x/go.nvim'
 
 " theme
 Plug 'EdenEast/nightfox.nvim' 
@@ -174,11 +179,15 @@ nmap <Leader>wt :NERDTreeFocus<CR>
 nmap <Leader>wr :NERDTreeRefreshRoot<CR>
 
 " go config
-autocmd FileType go nmap <LocalLeader>ch :GoDoc<CR>
-autocmd FileType go nmap <LocalLeader>cd :GoDef<CR>
-autocmd FileType go nmap <LocalLeader>ct :GoTest<CR>
-autocmd FileType go nmap <LocalLeader>ci :GoImport<space>
-autocmd FileType go nmap <LocalLeader>cn :GoRename<CR>
+autocmd FileType go nmap <LocalLeader>rt :GoTestFunc<CR>
+autocmd FileType go nmap <LocalLeader>rft :GoTestFile<CR>
+autocmd FileType go nmap <LocalLeader>ri :GoInstall<CR>
+autocmd FileType go nmap <LocalLeader>ri :GoBuild<CR>
+autocmd FileType go nmap <LocalLeader>aj :GoAddTag<CR>
+autocmd FileType go nmap <LocalLeader>at :GoAddTest<CR>
+autocmd FileType go nmap <LocalLeader>ai :GoImport<Space>
+autocmd FileType go nmap <LocalLeader>gg :GoGet<Space>
+autocmd FileType go AutoFormatBuffer gofmt
 
 " clojure config
 autocmd FileType clojure AutoFormatBuffer cljstyle
@@ -234,12 +243,14 @@ lspconfig['pyright'].setup{
     flags = lsp_flags,
     capabilities = capabilities
 }
+require('go').setup()
 lspconfig.solc.setup{
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities
 }
 lspconfig.gopls.setup{
+--    cmd = { "freepilot" },
     on_attach = on_attach,
     flags = lsp_flags,
     capabilities = capabilities
@@ -256,6 +267,7 @@ lspconfig.clojure_lsp.setup{
 
 
   local cmp = require("cmp")
+vim.lsp.set_log_level("debug")
 
   cmp.setup({
     snippet = {
