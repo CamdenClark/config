@@ -1,6 +1,7 @@
 export PATH=$HOME/anaconda3/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
+export PATH=$HOME/lua-language-server/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -71,3 +72,4 @@ export NOTES="$HOME/notes/camden"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias luamake=/luamake
