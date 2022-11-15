@@ -135,6 +135,7 @@ nmap <Leader>gc :GBranches checkout<CR>
 
 " Leader + q: 'meta' stuff like this configuration file
 nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
+nmap <Leader>qp :GFiles /Users/camdenc<CR>
 
 
 " Obsidian config
