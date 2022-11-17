@@ -20,7 +20,7 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set('n', '<localleader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-vim.keymap.set('n', '<localleader>it', function() vim.cmd(":Trouble") end)
+vim.keymap.set('n', '<localleader>it', function() vim.cmd(":TroubleToggle") end)
 
 require('go').setup()
 
@@ -88,6 +88,10 @@ local luasnip = require("luasnip")
 
 
 local cmp = require("cmp")
+
+require("trouble").setup {
+	mode = "document_diagnostics",
+}
 
 cmp.setup({
 	snippet = {

@@ -26,10 +26,6 @@ Plug 'tpope/vim-eunuch'
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 
-" Provides a file browser window in vim. I'm always considering whether or not
-" to nix this, but sometimes it's useful.
-Plug 'preservim/nerdtree'
-
 " Provides a nice helper summary at the bottom of your vim window, with what mode
 " you're in, what line you're on, branch, file, etc.
 Plug 'nvim-lualine/lualine.nvim'
@@ -103,9 +99,10 @@ set number
 " My nvim theme: nightfox
 colorscheme nightfox
 
-" nerdtree config
-autocmd VimEnter * NERDTree | wincmd p
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Preview window is hidden by default. You can toggle it with ctrl-/.
+" It will show on the right with 50% width, but if the width is smaller
+" than 70 columns, it will show above the candidate list
+let g:fzf_preview_window = ['up,50%', 'ctrl-/']
 
 " Leader + p config: Fuzzy find a file in a git repository
 nmap <C-P> :GFiles<CR>
@@ -132,10 +129,11 @@ nmap <Leader>gb :GBrowse!<CR>
 vmap <Leader>gb :'<,'>GBrowse!<CR>
 " This uses fzf-checkout to
 nmap <Leader>gc :GBranches checkout<CR>
+autocmd FileType fugitive nmap q :q<CR>
 
 " Leader + q: 'meta' stuff like this configuration file
 nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
-nmap <Leader>qp :GFiles /Users/camdenc<CR>
+nmap <Leader>qp :GFiles ~<CR>
 
 
 " Obsidian config
@@ -173,8 +171,6 @@ nmap <Leader>wv :vsplit<CR>
 nmap <Leader>wh :split<CR>
 nmap <Leader>wd :hide<CR>
 nmap <Leader>wn <C-w><C-w>
-nmap <Leader>wt :NERDTreeFocus<CR>
-nmap <Leader>wr :NERDTreeRefreshRoot<CR>
 
 " go config
 autocmd FileType go nmap <LocalLeader>rt :GoTestFunc<CR>
