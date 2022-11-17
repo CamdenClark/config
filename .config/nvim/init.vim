@@ -21,6 +21,9 @@ Plug 'amdt/vim-niji'
 " Helpers for common unix commands
 Plug 'tpope/vim-eunuch'
 
+" Improve netrw directory stuff
+Plug 'tpope/vim-vinegar'
+
 " Autoformatting plugins
 " vim-maktaba is required for vim-codefmt
 Plug 'google/vim-maktaba'
@@ -98,6 +101,11 @@ set number
 
 " My nvim theme: nightfox
 colorscheme nightfox
+
+" netrw config
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 1
 
 " Preview window is hidden by default. You can toggle it with ctrl-/.
 " It will show on the right with 50% width, but if the width is smaller
