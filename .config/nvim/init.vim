@@ -137,7 +137,7 @@ nmap <Leader>gb :GBrowse!<CR>
 vmap <Leader>gb :'<,'>GBrowse!<CR>
 " This uses fzf-checkout to
 nmap <Leader>gc :GBranches checkout<CR>
-autocmd FileType fugitive nmap q :q<CR>
+autocmd FileType fugitive nmap <buffer> q :q<CR>
 
 " Leader + q: 'meta' stuff like this configuration file
 nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
@@ -190,7 +190,7 @@ autocmd FileType go nmap <LocalLeader>at :GoAddTest<CR>
 autocmd FileType go nmap <LocalLeader>ai :GoImport<Space>
 autocmd FileType go nmap <LocalLeader>gg :GoGet<Space>
 autocmd FileType go AutoFormatBuffer gofmt
-autocmd FileType qf nmap q :q<CR>
+autocmd FileType qf nmap <buffer> q :q<CR>
 
 " clojure config
 autocmd FileType clojure AutoFormatBuffer cljstyle
