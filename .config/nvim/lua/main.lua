@@ -22,6 +22,7 @@ end
 
 vim.keymap.set('n', '<localleader>it', function() vim.cmd(":TroubleToggle") end)
 
+require('tree-sitter-just').setup({})
 require('go').setup()
 
 local lspconfig = require('lspconfig')
@@ -38,6 +39,11 @@ lspconfig.pyright.setup {
 	capabilities = capabilities
 }
 lspconfig.solc.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities
+}
+lspconfig.rust_analyzer.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities

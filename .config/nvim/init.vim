@@ -45,10 +45,11 @@ Plug 'junegunn/fzf.vim'
 " Provides a fzf experience for checking out git branches
 Plug 'stsewd/fzf-checkout.vim'
 
-" Clojure config
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'Olical/conjure'
+Plug 'IndianBoy42/tree-sitter-just'
 
+" Clojure config
+Plug 'Olical/conjure'
 Plug 'gpanders/nvim-parinfer'
 
 " Github copilot
@@ -202,7 +203,7 @@ autocmd FileType python AutoFormatBuffer yapf
 " typescript config
 autocmd FileType typescript,json AutoFormatBuffer prettier
 
-autocmd FileType clojure,go,python,typescript,lua set signcolumn=yes
+autocmd FileType clojure,go,python,rust,typescript,lua set signcolumn=yes
 
 " see lua/main.lua
 " This contains the bulk of my other configuration
