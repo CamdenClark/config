@@ -50,6 +50,7 @@ Plug 'IndianBoy42/tree-sitter-just'
 
 " Clojure config
 Plug 'Olical/conjure'
+  
 Plug 'gpanders/nvim-parinfer'
 
 " Github copilot
@@ -80,10 +81,12 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 
-
+Plug 'MunifTanjim/nui.nvim'
 Plug 'Olical/aniseed'
+Plug 'nvim-lua/plenary.nvim'
 
 " Plug '~/obsidianlite'
+" Plug '~/ankinvim'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
 
 call plug#end()
