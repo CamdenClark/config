@@ -6,6 +6,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lsp_flags = {
 	debounce_text_changes = 150,
 }
+
 local on_attach = function(_, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set('n', '<localleader>gD', vim.lsp.buf.declaration, bufopts)
@@ -32,32 +33,38 @@ require('go').setup()
 
 local lspconfig = require('lspconfig')
 -- to debug your lsp setup
--- vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("info")
+
 lspconfig.tsserver.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities
 }
+
 lspconfig.pyright.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities
 }
+
 lspconfig.solc.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities
 }
+
 lspconfig.rust_analyzer.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities
 }
+
 lspconfig.gopls.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities
 }
+
 lspconfig.clojure_lsp.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -93,16 +100,18 @@ lspconfig.sumneko_lua.setup {
 	flags = lsp_flags,
 	capabilities = capabilities
 }
+
+require("trouble").setup {
+	mode = "document_diagnostics",
+}
+
 -- Set up nvim-cmp.
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
 
 local luasnip = require("luasnip")
 
 local cmp = require("cmp")
-
-require("trouble").setup {
-	mode = "document_diagnostics",
-}
+vim.cmd("set wildignorecase")
 
 cmp.setup({
 	snippet = {
@@ -169,6 +178,7 @@ local function cmp_tab_colon(fallback)
 		fallback()
 	end
 end
+
 
 cmp.setup.cmdline(':', {
 	mapping = {
