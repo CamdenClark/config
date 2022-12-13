@@ -99,6 +99,7 @@ let maplocalleader = ","
 
 " This makes semicolon work identically to colon
 nmap ; :
+inoremap jj <Esc>
 
 " Enable line numbers
 set number
@@ -125,7 +126,6 @@ nmap <C-F> :Rg<CR>
 nmap <Leader>f :Rg<CR>
 
 " Leader + b config: Fuzzy find on buffers open in vim
-nmap <C-B> :Buffer<CR>
 nmap <Leader>b :Buffer<CR>
 
 " Leader + g config: git, using vim-fugitive commands

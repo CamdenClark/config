@@ -18,6 +18,11 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set('n', '<localleader>ca', vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set('n', '<localleader>gr', vim.lsp.buf.references, bufopts)
 	vim.keymap.set('n', '<localleader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+	vim.keymap.set('n', '<localleader>ai', function() vim.lsp.buf.code_action({ filter = function(code_action)
+			print(code_action.title)
+			return code_action.title:find("Add require", 1, true) ~= nil
+		end, apply = true})
+	end, bufopts)
 end
 
 vim.keymap.set('n', '<localleader>it', function() vim.cmd(":TroubleToggle") end)
@@ -93,7 +98,6 @@ require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
 
 local luasnip = require("luasnip")
 
-
 local cmp = require("cmp")
 
 require("trouble").setup {
@@ -119,6 +123,7 @@ cmp.setup({
 				cmp.confirm({ select = true })
 				cmp.complete()
 			elseif luasnip.expand_or_jumpable() then
+				-- sucks--this conflicts with nvim-parinfer
 				luasnip.expand_or_jump()
 			else
 				fallback()
@@ -131,8 +136,8 @@ cmp.setup({
 		['<C-j>'] = cmp.mapping.select_next_item(),
 	},
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' },
+		{ name = 'nvim_lsp' },
 		{ name = 'conjure' },
 	})
 })
