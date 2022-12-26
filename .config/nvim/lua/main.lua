@@ -31,9 +31,25 @@ vim.keymap.set('n', '<localleader>it', function() vim.cmd(":TroubleToggle") end)
 require('tree-sitter-just').setup({})
 require('go').setup()
 
+require('nvim-treesitter.configs').setup {
+	highlight = { enable = true }
+};
+
 local lspconfig = require('lspconfig')
 -- to debug your lsp setup
 -- vim.lsp.set_log_level("info")
+
+lspconfig.prismals.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities
+}
+
+lspconfig.svelte.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities
+}
 
 lspconfig.tsserver.setup {
 	on_attach = on_attach,
@@ -58,6 +74,7 @@ lspconfig.rust_analyzer.setup {
 	flags = lsp_flags,
 	capabilities = capabilities
 }
+vim.g['conjure#extract#tree_sitter#enabled'] = true
 
 lspconfig.gopls.setup {
 	on_attach = on_attach,

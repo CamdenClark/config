@@ -111,6 +111,7 @@ colorscheme nightfox
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 1
+autocmd FileType netrw nmap <buffer> q :q<CR>
 
 " Preview window is hidden by default. You can toggle it with ctrl-/.
 " It will show on the right with 50% width, but if the width is smaller
@@ -142,6 +143,7 @@ vmap <Leader>gb :'<,'>GBrowse!<CR>
 " This uses fzf-checkout to
 nmap <Leader>gc :GBranches checkout<CR>
 autocmd FileType fugitive nmap <buffer> q :q<CR>
+autocmd FileType git nmap <buffer> q :q<CR>
 
 " Leader + q: 'meta' stuff like this configuration file
 nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
@@ -168,6 +170,7 @@ nmap <Leader>zc :! add-concept<space>
 " <Leader>c for system clipboard
 vmap <Leader>cc "+y
 nmap <Leader>cp "+p
+nmap <Leader>cP "+P
 nmap <Leader>cg :GBrowse!<CR>
 vmap <Leader>cg :'<,'>GBrowse!<CR>
 
@@ -206,7 +209,7 @@ autocmd FileType python AutoFormatBuffer yapf
 " typescript config
 autocmd FileType typescript,json AutoFormatBuffer prettier
 
-autocmd FileType clojure,go,python,rust,typescript,lua set signcolumn=yes
+autocmd FileType clojure,go,prisma,python,rust,svelte,typescript,lua set signcolumn=yes
 
 " see lua/main.lua
 " This contains the bulk of my other configuration
