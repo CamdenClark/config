@@ -22,7 +22,7 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set('n', '<localleader>ai', function() vim.lsp.buf.code_action({ filter = function(code_action)
 			print(code_action.title)
 			return code_action.title:find("Add require", 1, true) ~= nil
-		end, apply = true})
+		end, apply = true })
 	end, bufopts)
 end
 
@@ -34,7 +34,7 @@ require('go').setup()
 require('nvim-treesitter.configs').setup {
 	highlight = { enable = true }
 };
-
+require 'nvim-web-devicons'.setup { }
 local lspconfig = require('lspconfig')
 -- to debug your lsp setup
 -- vim.lsp.set_log_level("info")
@@ -195,7 +195,6 @@ local function cmp_tab_colon(fallback)
 		fallback()
 	end
 end
-
 
 cmp.setup.cmdline(':', {
 	mapping = {
