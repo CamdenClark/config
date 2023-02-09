@@ -11,7 +11,7 @@ local on_attach = function(_, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set('n', '<localleader>gD', vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set('n', '<localleader>gd', vim.lsp.buf.definition, bufopts)
-	vim.keymap.set('n', '<localleader>gh', vim.lsp.buf.hover, bufopts)
+	vim.keymap.set('n', '<localleader>h', vim.lsp.buf.hover, bufopts)
 	vim.keymap.set('n', '<localleader>gi', vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
 	vim.keymap.set('n', '<localleader>gt', vim.lsp.buf.type_definition, bufopts)
@@ -34,11 +34,21 @@ require('go').setup()
 require('nvim-treesitter.configs').setup {
 	highlight = { enable = true }
 };
-require 'nvim-web-devicons'.setup { }
+require('nvim-web-devicons').setup { }
 local lspconfig = require('lspconfig')
 -- to debug your lsp setup
 -- vim.lsp.set_log_level("info")
 
+lspconfig.tailwindcss.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities
+}
+lspconfig.marksman.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities
+}
 lspconfig.prismals.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -90,8 +100,6 @@ lspconfig.clojure_lsp.setup {
 
 local lua_settings = {
 	runtime = {
-		-- Tell the language server which version of Lua you're using
-		-- (most likely LuaJIT in the case of Neovim)
 		version = 'LuaJIT',
 	},
 	diagnostics = {
@@ -183,30 +191,11 @@ cmp.setup.cmdline('/', {
 	},
 })
 
-local function cmp_tab_colon(fallback)
-	if cmp.visible() then
-		cmp.confirm({ select = true }, function()
-			cmp.reset()
-			cmp.complete()
-		end)
-	elseif luasnip.expand_or_jumpable() then
-		luasnip.expand_or_jump()
-	else
-		fallback()
-	end
-end
-
 cmp.setup.cmdline(':', {
-	mapping = {
-		['<Tab>'] = cmp.mapping(cmp_tab_colon),
-		['<CR>'] = cmp.mapping.confirm({ select = true }),
-		['<Up>'] = cmp.mapping.select_prev_item(),
-		['<C-k>'] = cmp.mapping.select_prev_item(),
-		['<Down>'] = cmp.mapping.select_next_item(),
-		['<C-j>'] = cmp.mapping.select_next_item(),
-	},
+	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({
 		{ name = 'cmdline' },
 		{ name = 'path', options = { trailing_slash = true } }
 	})
 })
+

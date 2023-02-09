@@ -50,11 +50,11 @@ Plug 'IndianBoy42/tree-sitter-just'
 
 " Clojure config
 Plug 'Olical/conjure'
+"Plug '~/conjure'
+
+Plug 'goerz/jupytext.vim'
   
 Plug 'gpanders/nvim-parinfer'
-
-" Github copilot
-Plug 'github/copilot.vim'
 
 " Golang support
 Plug 'ray-x/go.nvim'
@@ -74,7 +74,6 @@ Plug 'saadparwaiz1/cmp_luasnip'
 
 " completion framework stuff
 Plug 'neovim/nvim-lspconfig'
-Plug 'PaterJason/cmp-conjure'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -111,7 +110,10 @@ colorscheme nightfox
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 1
+
 autocmd FileType netrw nmap <buffer> q :q<CR>
+
+" let g:conjure#debug = 0
 
 " Preview window is hidden by default. You can toggle it with ctrl-/.
 " It will show on the right with 50% width, but if the width is smaller
@@ -142,13 +144,12 @@ nmap <Leader>gb :GBrowse!<CR>
 vmap <Leader>gb :'<,'>GBrowse!<CR>
 " This uses fzf-checkout to
 nmap <Leader>gc :GBranches checkout<CR>
+nmap <Leader>gn :Git checkout -b<Space>
 autocmd FileType fugitive nmap <buffer> q :q<CR>
 autocmd FileType git nmap <buffer> q :q<CR>
 
 " Leader + q: 'meta' stuff like this configuration file
 nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
-nmap <Leader>qp :GFiles ~<CR>
-
 
 " Obsidian config
 let g:obsidian_vault = $HOME.'/notes/camden'
@@ -185,6 +186,7 @@ nmap <Leader>dc :Copy<space>
 nmap <Leader>wv :vsplit<CR>
 nmap <Leader>wh :split<CR>
 nmap <Leader>wd :hide<CR>
+nmap <Leader>ww <C-w><C-w>
 nmap <Leader>wn <C-w><C-w>
 
 " go config
@@ -207,9 +209,9 @@ autocmd FileType clojure nmap <LocalLeader>cw :ConjureShadowSelect<Space>
 autocmd FileType python AutoFormatBuffer yapf
 
 " typescript config
-autocmd FileType typescript,json AutoFormatBuffer prettier
+autocmd FileType markdown,json AutoFormatBuffer prettier
 
-autocmd FileType clojure,go,prisma,python,rust,svelte,typescript,lua set signcolumn=yes
+autocmd FileType clojure,go,markdown,prisma,python,rust,svelte,typescript,lua set signcolumn=yes
 
 " see lua/main.lua
 " This contains the bulk of my other configuration
