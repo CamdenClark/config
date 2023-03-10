@@ -48,17 +48,18 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'IndianBoy42/tree-sitter-just'
 
-" Clojure config
+" Clojure config (interactive evaluation)
 Plug 'Olical/conjure'
 "Plug '~/conjure'
 
 Plug 'goerz/jupytext.vim'
   
+" Taming parentheses
+Plug 'guns/vim-sexp'
 Plug 'gpanders/nvim-parinfer'
 
 " Golang support
 Plug 'ray-x/go.nvim'
-
 " theme
 Plug 'EdenEast/nightfox.nvim' 
 
