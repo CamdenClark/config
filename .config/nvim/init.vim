@@ -111,8 +111,10 @@ let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 let g:netrw_browse_split = 1
 
-autocmd FileType netrw nmap <buffer> q :q<CR>
+autocmd FileType netrw nnoremap <buffer> q :q<CR>
+autocmd FileType netrw vnoremap <buffer> mf :normal mf<CR>
 
+autocmd FileType help nnoremap <buffer> q :q<CR>
 " let g:conjure#debug = 0
 
 " Preview window is hidden by default. You can toggle it with ctrl-/.
@@ -176,7 +178,7 @@ nmap <Leader>cg :GBrowse!<CR>
 vmap <Leader>cg :'<,'>GBrowse!<CR>
 
 " Leader + d: filesystem config
-nmap <Leader>db :Explore<CR>
+nmap <Leader>db -
 nmap <Leader>dd :Delete<CR>
 nmap <Leader>dr :Remove<CR>
 nmap <Leader>dm :Move<space>
@@ -188,6 +190,9 @@ nmap <Leader>wh :split<CR>
 nmap <Leader>wd :hide<CR>
 nmap <Leader>ww <C-w><C-w>
 nmap <Leader>wn <C-w><C-w>
+
+nmap <Leader>jf <C-i>
+nmap <Leader>jb <C-o>
 
 " go config
 autocmd FileType go nmap <LocalLeader>rt :GoTestFunc<CR>
