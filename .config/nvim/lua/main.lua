@@ -116,8 +116,10 @@ local lspconfig = require('lspconfig')
 lspconfig.tailwindcss.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
-	capabilities = capabilities
+	capabilities = capabilities,
+	filetypes = {'svelte'}
 }
+
 lspconfig.marksman.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
@@ -256,7 +258,6 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = 'luasnip' },
 		{ name = 'nvim_lsp' },
-		{ name = 'conjure' },
 	})
 })
 

@@ -49,17 +49,18 @@ Plug 'stsewd/fzf-checkout.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'IndianBoy42/tree-sitter-just'
 
-" Clojure config
-" Plug 'Olical/conjure'
-Plug '~/conjure'
+" Clojure config (interactive evaluation)
+Plug 'Olical/conjure'
+"Plug '~/conjure'
 
 Plug 'goerz/jupytext.vim'
   
+" Taming parentheses
+Plug 'guns/vim-sexp'
 Plug 'gpanders/nvim-parinfer'
 
 " Golang support
 Plug 'ray-x/go.nvim'
-
 " theme
 Plug 'EdenEast/nightfox.nvim' 
 
@@ -115,6 +116,9 @@ colorscheme nightfox
 " It will show on the right with 50% width, but if the width is smaller
 " than 70 columns, it will show above the candidate list
 let g:fzf_preview_window = ['up,50%', 'ctrl-/']
+
+nmap <Leader>jf <C-i>
+nmap <Leader>jb <C-o>
 
 " go config
 autocmd FileType go nmap <LocalLeader>rt :GoTestFunc<CR>
