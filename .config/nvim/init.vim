@@ -18,6 +18,7 @@ Plug 'tpope/vim-surround'
 " Rainbow parens
 Plug 'amdt/vim-niji'
 
+Plug 'github/copilot.vim'
 " Helpers for common unix commands
 Plug 'tpope/vim-eunuch'
 
@@ -49,8 +50,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'IndianBoy42/tree-sitter-just'
 
 " Clojure config
-Plug 'Olical/conjure'
-"Plug '~/conjure'
+" Plug 'Olical/conjure'
+Plug '~/conjure'
 
 Plug 'goerz/jupytext.vim'
   
@@ -87,6 +88,8 @@ Plug 'nvim-lua/plenary.nvim'
 " Plug '~/obsidianlite'
 " Plug '~/ankinvim'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
+ 
+Plug '~/flyboy'
 
 call plug#end()
 
@@ -106,88 +109,12 @@ set number
 " My nvim theme: nightfox
 colorscheme nightfox
 
-" netrw config
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 1
-
-autocmd FileType netrw nmap <buffer> q :q<CR>
-
-" let g:conjure#debug = 0
+" let g:conjure#debug = 1
 
 " Preview window is hidden by default. You can toggle it with ctrl-/.
 " It will show on the right with 50% width, but if the width is smaller
 " than 70 columns, it will show above the candidate list
 let g:fzf_preview_window = ['up,50%', 'ctrl-/']
-
-" Leader + p config: Fuzzy find a file in a git repository
-nmap <C-P> :GFiles<CR>
-nmap <Leader>p :GFiles<CR>
-
-" Leader + f config: Grep through file content in a git repository
-nmap <C-F> :Rg<CR>
-nmap <Leader>f :Rg<CR>
-
-" Leader + b config: Fuzzy find on buffers open in vim
-nmap <Leader>b :Buffer<CR>
-
-" Leader + g config: git, using vim-fugitive commands
-nmap <Leader>gs :Git<CR>
-nmap <Leader>gu :Git pull<CR>
-nmap <Leader>gp :Git -c push.default=current push<CR>
-nmap <Leader>gd :Git diff<CR>
-nmap <Leader>gl :Git log<CR>
-" This will copy to your clipboard a link to this file in whatever hosted git
-" service you're using. This requires vim-rhubarb for github or the sourcehut
-" plugin found above.
-nmap <Leader>gb :GBrowse!<CR>
-vmap <Leader>gb :'<,'>GBrowse!<CR>
-" This uses fzf-checkout to
-nmap <Leader>gc :GBranches checkout<CR>
-nmap <Leader>gn :Git checkout -b<Space>
-autocmd FileType fugitive nmap <buffer> q :q<CR>
-autocmd FileType git nmap <buffer> q :q<CR>
-
-" Leader + q: 'meta' stuff like this configuration file
-nmap <Leader>qc :e ~/.config/nvim/init.vim<CR>
-
-" Obsidian config
-let g:obsidian_vault = $HOME.'/notes/camden'
-command! -bang ObsidianFiles call fzf#vim#files(g:obsidian_vault, <bang>0)
-
-" <Leader>z for obsidian/zettelkasten
-nmap <Leader>zd :ObsidianOpenDailyNote<CR>
-nmap <Leader>zk :ObsidianOpenZkNote<CR>
-nmap <Leader>zp :ObsidianFiles<CR>
-" hardcoded notes for todo items
-nmap <Leader>zw :e ~/notes/camden/Todos/WorkTodos.md<CR>
-nmap <Leader>zz :e ~/notes/camden/Todos/ConfigTodos.md<CR>
-nmap <Leader>zs :e ~/notes/camden/Todos/StudyTodos.md<CR>
-nmap <Leader>zh :e ~/notes/camden/Todos/HomeTodos.md<CR>
-" Some keys that help me with my `Concepts` folder in notes
-nmap <Leader>zm :Move ~/notes/camden/Concepts/
-nmap <Leader>zc :! add-concept<space>
-
-" <Leader>c for system clipboard
-vmap <Leader>cc "+y
-nmap <Leader>cp "+p
-nmap <Leader>cP "+P
-nmap <Leader>cg :GBrowse!<CR>
-vmap <Leader>cg :'<,'>GBrowse!<CR>
-
-" Leader + d: filesystem config
-nmap <Leader>db :Explore<CR>
-nmap <Leader>dd :Delete<CR>
-nmap <Leader>dr :Remove<CR>
-nmap <Leader>dm :Move<space>
-nmap <Leader>dc :Copy<space>
-
-" Leader + w: window config
-nmap <Leader>wv :vsplit<CR>
-nmap <Leader>wh :split<CR>
-nmap <Leader>wd :hide<CR>
-nmap <Leader>ww <C-w><C-w>
-nmap <Leader>wn <C-w><C-w>
 
 " go config
 autocmd FileType go nmap <LocalLeader>rt :GoTestFunc<CR>
@@ -211,7 +138,7 @@ autocmd FileType python AutoFormatBuffer yapf
 " typescript config
 autocmd FileType markdown,json AutoFormatBuffer prettier
 
-autocmd FileType clojure,go,markdown,prisma,python,rust,svelte,typescript,lua set signcolumn=yes
+autocmd FileType clojure,go,markdown,prisma,python,rust,svelte,typescript,lua,typescriptreact set signcolumn=yes
 
 " see lua/main.lua
 " This contains the bulk of my other configuration
