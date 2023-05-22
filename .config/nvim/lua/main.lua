@@ -220,7 +220,6 @@ lspconfig.sumneko_lua.setup {
 require("trouble").setup {
 	mode = "document_diagnostics",
 }
-
 -- Set up nvim-cmp.
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
 

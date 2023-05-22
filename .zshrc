@@ -2,10 +2,9 @@ export PATH=$HOME/anaconda3/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/lua-language-server/bin:$PATH
-
 export FLYCTL_INSTALL="/home/camden/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
-
+export PATH=$HOME/.local/bin:$PATH
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -86,3 +85,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+source /Users/camdenc/.config/broot/launcher/bash/br

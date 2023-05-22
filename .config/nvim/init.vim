@@ -60,8 +60,8 @@ Plug 'Olical/conjure'
 Plug 'goerz/jupytext.vim'
   
 " Taming parentheses
-Plug 'guns/vim-sexp'
-Plug 'gpanders/nvim-parinfer'
+" Plug 'guns/vim-sexp'
+" Plug 'gpanders/nvim-parinfer'
 
 " Golang support
 Plug 'ray-x/go.nvim'
