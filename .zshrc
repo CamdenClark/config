@@ -2,6 +2,10 @@ export PATH=$HOME/anaconda3/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$HOME/lua-language-server/bin:$PATH
+
+export FLYCTL_INSTALL="/home/camden/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
+
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -73,3 +77,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias luamake=/luamake
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+# pnpm
+export PNPM_HOME="/home/camden/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

@@ -2,6 +2,10 @@ set nocompatible
 
 filetype off
 set completeopt=menu,menuone,noselect
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 call plug#begin()
 
@@ -67,7 +71,7 @@ Plug 'EdenEast/nightfox.nvim'
 " prettier config for vim
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+  \ 'for': ['javascript', 'typescript', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
 
 
 " lua-based snippet engine
@@ -90,7 +94,7 @@ Plug 'nvim-lua/plenary.nvim'
 " Plug '~/ankinvim'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
  
-Plug '~/flyboy'
+Plug 'CamdenClark/flyboy'
 
 call plug#end()
 
@@ -140,7 +144,7 @@ autocmd FileType clojure nmap <LocalLeader>cw :ConjureShadowSelect<Space>
 autocmd FileType python AutoFormatBuffer yapf
 
 " typescript config
-autocmd FileType markdown,json AutoFormatBuffer prettier
+" autocmd FileType markdown,json,typescriptreact,typescript,javascript,javascriptreact AutoFormatBuffer prettier
 
 autocmd FileType clojure,go,markdown,prisma,python,rust,svelte,typescript,lua,typescriptreact set signcolumn=yes
 

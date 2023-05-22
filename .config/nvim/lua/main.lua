@@ -112,12 +112,17 @@ require('nvim-web-devicons').setup { }
 local lspconfig = require('lspconfig')
 -- to debug your lsp setup
 -- vim.lsp.set_log_level("info")
+lspconfig.html.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities,
+}
 
 lspconfig.tailwindcss.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
 	capabilities = capabilities,
-	filetypes = {'svelte'}
+	filetypes = {'svelte', 'typescriptreact'}
 }
 
 lspconfig.marksman.setup {
