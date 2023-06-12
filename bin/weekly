@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Calculate most recent Monday's date
+today=$(date +%u)
+if [ "$today" -eq 1 ]
+then
+    # Today is Monday
+    monday_date=$(date +%Y-%m-%d)
+else
+    # Calculate the most recent Monday
+    monday_date=$(date -d "last Monday" +%Y-%m-%d)
+fi
+
+# Name of the new file
+filename="$NOTES/Weekly/Week_Of_${monday_date}.md"
+
+# Check if file doesn't exist
+if [ ! -f "$filename" ]
+then
+    # Copy the template to the new file
+    cp "$NOTES/Templates/Weekly.md" "$filename"
+fi
+
+# Open the new file in neovim
+nvim "$filename"
+exit 0
