@@ -176,7 +176,8 @@ vim.g['conjure#extract#tree_sitter#enabled'] = true
 lspconfig.gopls.setup {
 	on_attach = on_attach,
 	flags = lsp_flags,
-	capabilities = capabilities
+	capabilities = capabilities,
+    cmd = { "lspilot" }
 }
 
 lspconfig.clojure_lsp.setup {

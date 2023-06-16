@@ -87,3 +87,6 @@ esac
 # pnpm end
 
 source /Users/camdenc/.config/broot/launcher/bash/br
+
+# opam configuration
+[[ ! -r /home/camden/.opam/opam-init/init.zsh ]] || source /home/camden/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
