@@ -209,7 +209,7 @@ local lua_settings = {
 	},
 }
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
 	settings = {
 		Lua = lua_settings,
 	},
