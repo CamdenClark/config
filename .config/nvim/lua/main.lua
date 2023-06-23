@@ -186,6 +186,12 @@ lspconfig.clojure_lsp.setup {
 	capabilities = capabilities
 }
 
+lspconfig.nil_ls.setup {
+	on_attach = on_attach,
+	flags = lsp_flags,
+	capabilities = capabilities
+}
+
 local lua_settings = {
 	runtime = {
 		version = 'LuaJIT',
