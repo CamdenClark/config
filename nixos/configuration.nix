@@ -83,29 +83,68 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.camden = {
     isNormalUser = true;
     description = "camden";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-    ];
+    shell = pkgs.zsh;
   };
   home-manager.users.camden = { pkgs, ... }: {
-    home.packages = [ pkgs.atool pkgs.httpie pkgs.nil ];
-      home.stateVersion = "23.05";
+    home.packages = [ pkgs.atool 
+    pkgs.httpie 
+    pkgs.nil 
+    pkgs.spotify 
+    pkgs.firefox
+    ];
+      
+    home.stateVersion = "23.05";
 	programs.neovim = {
 	  enable = true;
 	  defaultEditor = true;
+      extraPackages = with pkgs; [
+        sumneko-lua-language-server
+        marksman
+      ];
 	};
-    programs.bash.enable = true;
+    programs.alacritty = {
+      enable = true;
+      settings = { 
+        font = { 
+          normal = {
+            family = "Hack Nerd Font Mono";
+            style = "Regular";
+          };
+          bold = {
+            family = "Hack Nerd Font Mono";
+            style = "Bold";
+          };
+          italice = {
+            family = "Hack Nerd Font Mono";
+            style = "Italic";
+          };
+          size = 16.0;
+        };
+        shell.program = "${pkgs.zsh}/bin/zsh";
+      };
+      
+      };
+    nixpkgs.config.allowUnfree = true;
+    programs.zsh = {
+      enable = true;
+      shellAliases = {
+        ll = "ls -l";
+        update = "sudo nixos-rebuild switch";
+      };
+      oh-my-zsh = {
+        enable = true;
+        plugins = [
+            "git"
+        ];
+        theme = "robbyrussell";
+      };
+    };
   };
 
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
@@ -119,12 +158,13 @@
     syncthing
     obsidian
     git
-    alacritty
     ripgrep
     python3
     sioyek
+
   ];
 
+  environment.shells = with pkgs; [ zsh ];
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

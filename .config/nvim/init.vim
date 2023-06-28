@@ -95,6 +95,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
  
 Plug 'CamdenClark/flyboy'
+" Plug '~/flyboy'
 
 call plug#end()
 
@@ -146,7 +147,7 @@ autocmd FileType python AutoFormatBuffer yapf
 " typescript config
 " autocmd FileType markdown,json,typescriptreact,typescript,javascript,javascriptreact AutoFormatBuffer prettier
 
-autocmd FileType clojure,go,markdown,prisma,python,rust,svelte,typescript,lua,typescriptreact set signcolumn=yes
+autocmd FileType clojure,go,markdown,prisma,python,rust,svelte,typescript,lua,typescriptreact,nix set signcolumn=yes
 
 " see lua/main.lua
 " This contains the bulk of my other configuration
