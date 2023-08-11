@@ -65,6 +65,11 @@ vim.api.nvim_set_keymap('n', '<Leader>wd', ':hide<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>ww', '<C-w><C-w>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>wn', '<C-w><C-w>', { noremap = true })
 
+-- <Leader>a - AI tooling
+vim.api.nvim_set_keymap('n', '<Leader>av', ':FlyboyOpenVSplit visual<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>ao', ':FlyboyOpenVSplit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>as', ':FlyboySendMessage<CR>', { noremap = true })
+
 -- <Leader>q - 'meta' stuff like this configuration file
 vim.api.nvim_set_keymap('n', '<Leader>qc', ':e ~/.config/nvim/lua/main.lua<CR>', {})
 
@@ -298,4 +303,4 @@ cmp.setup.cmdline(':', {
     })
 })
 
-require('flyboy.config').setup({ model = "gpt-4" })
+require('flyboy.config').setup({ model = "gpt-3.5-turbo" })
