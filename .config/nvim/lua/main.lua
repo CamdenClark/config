@@ -56,6 +56,7 @@ vim.api.nvim_set_keymap('n', '<Leader>db', ':Explore<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>dd', ':Delete<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>dr', ':Remove<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>dm', ':Move<space>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>dn', ':Rename<space>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>dc', ':Copy<space>', { noremap = true })
 
 -- <Leader>w - window config
@@ -66,9 +67,21 @@ vim.api.nvim_set_keymap('n', '<Leader>ww', '<C-w><C-w>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>wn', '<C-w><C-w>', { noremap = true })
 
 -- <Leader>a - AI tooling
-vim.api.nvim_set_keymap('n', '<Leader>av', ':FlyboyOpenVSplit visual<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>ao', ':FlyboyOpenVSplit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<Leader>av', ':FlyboyOpenVSplit visual<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>av', ':FlyboyOpenVSplit<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>ao', ':FlyboyOpen<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>as', ':FlyboySendMessage<CR>', { noremap = true })
+
+-- <Leader>r - Anki tooling
+vim.api.nvim_set_keymap('n', '<Leader>r1', 'viw:AnkiWrapCloze<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>r2', 'viw:AnkiWrapCloze 2<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>r3', 'viw:AnkiWrapCloze 3<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<Leader>r1', ':AnkiWrapCloze<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<Leader>r2', ':AnkiWrapCloze 2<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<Leader>r3', ':AnkiWrapCloze 3<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<Leader>rc', ':AnkiCreateCloze<CR>', { noremap = true })
+vim.api.nvim_set_keymap('v', '<Leader>rb', ':AnkiCreateBasic<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>rt', ':AnkiSelectTags<space>', { noremap = true })
 
 -- <Leader>q - 'meta' stuff like this configuration file
 vim.api.nvim_set_keymap('n', '<Leader>qc', ':e ~/.config/nvim/lua/main.lua<CR>', {})
@@ -132,6 +145,7 @@ lspconfig.marksman.setup {
     flags = lsp_flags,
     capabilities = capabilities
 }
+
 lspconfig.prismals.setup {
     on_attach = on_attach,
     flags = lsp_flags,
