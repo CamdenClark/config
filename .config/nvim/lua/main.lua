@@ -127,13 +127,6 @@ lspconfig.html.setup {
     capabilities = capabilities,
 }
 
-lspconfig.tailwindcss.setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    capabilities = capabilities,
-    filetypes = { 'svelte', 'typescriptreact' }
-}
-
 lspconfig.marksman.setup {
     on_attach = on_attach,
     flags = lsp_flags,
