@@ -15,6 +15,8 @@ ZSH_THEME="robbyrussell"
 
 HYPHEN_INSENSITIVE="true"
 
+export VAULT_ADDR="https://vault.amperity.top:8200"
+
 zstyle ':omz:update' mode auto      # update automatically without asking
 
 # Uncomment the following line to disable auto-setting terminal title.
@@ -90,3 +92,5 @@ source /Users/camdenc/.config/broot/launcher/bash/br
 
 # opam configuration
 [[ ! -r /home/camden/.opam/opam-init/init.zsh ]] || source /home/camden/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+export GODEBUG=asyncpreemptoff=1
+export TFENV_ARCH=amd64

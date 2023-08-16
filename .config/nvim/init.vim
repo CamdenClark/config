@@ -96,6 +96,8 @@ Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
  
 Plug 'CamdenClark/flyboy'
 " Plug '~/flyboy'
+"
+Plug '~/neoanki'
 
 call plug#end()
 

@@ -3,8 +3,8 @@
 
   :plugins [[lein-monolith "1.8.0"]
             [cider/cider-nrepl "0.24.0"]
-            [amperity-connector/lein-template "MONOLITH-SNAPSHOT"]
-            [amperity-service/lein-template "MONOLITH-SNAPSHOT"]
+            #_[amperity-connector/lein-template "MONOLITH-SNAPSHOT"]
+            #_[amperity-service/lein-template "MONOLITH-SNAPSHOT"]
             [lein-ancient "0.6.15" :exclusions [org.apache.httpcomponents/httpcore]]]
 
   :aliases {"refresh" ["do" "monolith" "each" ":refresh" "build" ":upstream" ":skip" :project/name ":parallel" "4" "install,"]}}
