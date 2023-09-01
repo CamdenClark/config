@@ -134,6 +134,12 @@ require('nvim-web-devicons').setup {}
 local lspconfig = require('lspconfig')
 -- to debug your lsp setup
 -- vim.lsp.set_log_level("info")
+lspconfig.zls.setup {
+    on_attach = on_attach,
+    flags = lsp_flags,
+    capabilities = capabilities,
+}
+
 lspconfig.html.setup {
     on_attach = on_attach,
     flags = lsp_flags,
@@ -192,8 +198,7 @@ vim.g['conjure#extract#tree_sitter#enabled'] = true
 lspconfig.gopls.setup {
     on_attach = on_attach,
     flags = lsp_flags,
-    capabilities = capabilities,
-    cmd = { "lspilot" }
+    capabilities = capabilities
 }
 
 lspconfig.clojure_lsp.setup {

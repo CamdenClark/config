@@ -98,6 +98,9 @@ Plug 'CamdenClark/flyboy'
 " Plug '~/flyboy'
 "
 Plug '~/neoanki'
+Plug '~/dictate.nvim'
+
+Plug '/home/camden/anki-nvim'
 
 call plug#end()
 
@@ -119,9 +122,6 @@ colorscheme nightfox
 
 " let g:conjure#debug = 1
 
-" Preview window is hidden by default. You can toggle it with ctrl-/.
-" It will show on the right with 50% width, but if the width is smaller
-" than 70 columns, it will show above the candidate list
 let g:fzf_preview_window = ['up,50%', 'ctrl-/']
 
 nmap <Leader>jf <C-i>
@@ -149,7 +149,7 @@ autocmd FileType python AutoFormatBuffer yapf
 " typescript config
 " autocmd FileType markdown,json,typescriptreact,typescript,javascript,javascriptreact AutoFormatBuffer prettier
 
-autocmd FileType clojure,go,markdown,prisma,python,rust,svelte,typescript,lua,typescriptreact,nix set signcolumn=yes
+autocmd FileType clojure,go,markdown,prisma,python,rust,svelte,typescript,lua,typescriptreact,nix,zig set signcolumn=yes
 
 " see lua/main.lua
 " This contains the bulk of my other configuration

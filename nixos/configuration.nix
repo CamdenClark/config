@@ -87,17 +87,31 @@
     isNormalUser = true;
     description = "camden";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
   };
   home-manager.users.camden = { pkgs, ... }: {
-    home.packages = [ pkgs.atool 
-    pkgs.httpie 
-    pkgs.nil 
-    pkgs.spotify 
-    pkgs.firefox
+    home.packages = with pkgs; [ 
+        atool 
+        httpie 
+        nil 
+        spotify 
+        firefox
+        _1password
+        _1password-gui
+        syncthing
+        gcc
+        discord
+        glibc
+        just
+        nodePackages.typescript-language-server
+        ffmpeg
+        irssi
+        zig
+        zls
     ];
       
     home.stateVersion = "23.05";
+    # TODO: Configure i3 :S
+    # xsession.windowManager.i3.enable = true;
 	programs.neovim = {
 	  enable = true;
 	  defaultEditor = true;
@@ -106,6 +120,7 @@
         marksman
       ];
 	};
+
     programs.alacritty = {
       enable = true;
       settings = { 
@@ -127,10 +142,16 @@
         shell.program = "${pkgs.zsh}/bin/zsh";
       };
       
-      };
+    };
+
     nixpkgs.config.allowUnfree = true;
+
     programs.zsh = {
       enable = true;
+      enableCompletion = true;
+      enableAutosuggestions = true;
+      enableSyntaxHighlighting = true;
+      initExtra = "export NOTES=$HOME/notes/camden";
       shellAliases = {
         ll = "ls -l";
         update = "sudo nixos-rebuild switch";
@@ -142,26 +163,46 @@
         ];
         theme = "robbyrussell";
       };
+      plugins = [
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.5.0";
+          sha256 = "0za4aiwwrlawnia4f29msk822rj9bgcygw6a8a6iikiwzjjz0g91";
+        };
+      }
+    ];
+    };
+
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
     };
   };
 
   nixpkgs.config.allowUnfree = true;
+  
+
+    nix = {
+      package = pkgs.nixFlakes;
+      extraOptions = ''
+        experimental-features = nix-command flakes
+      '';
+    };
+
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  environment.localBinInPath = true;
   environment.systemPackages = with pkgs; [
-    cargo
-    rustc
-    _1password
-    _1password-gui
-    gcc
-    syncthing
     obsidian
     git
     ripgrep
     python3
     sioyek
-
   ];
 
   environment.shells = with pkgs; [ zsh ];
