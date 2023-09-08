@@ -94,8 +94,8 @@ Plug 'nvim-lua/plenary.nvim'
 " Plug '~/ankinvim'
 Plug 'https://git.sr.ht/~hermiod/obsidianlite.nvim'
  
-Plug 'CamdenClark/flyboy'
-" Plug '~/flyboy'
+" Plug 'CamdenClark/flyboy'
+Plug '~/flyboy'
 "
 Plug '~/neoanki'
 Plug '~/dictate.nvim'

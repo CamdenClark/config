@@ -160,6 +160,7 @@
         enable = true;
         plugins = [
             "git"
+            "vi-mode"
         ];
         theme = "robbyrussell";
       };
