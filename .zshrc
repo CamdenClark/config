@@ -62,6 +62,7 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
 export NOTES="$HOME/notes/camden"
+export MACHINE='work'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -78,7 +79,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias luamake=/luamake
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
 
 # pnpm
 export PNPM_HOME="/home/camden/.local/share/pnpm"

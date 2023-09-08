@@ -311,8 +311,19 @@ cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = 'cmdline' },
-        { name = 'path',   options = { trailing_slash = true } }
+        { name = 'path', options = { trailing_slash = true } }
     })
 })
 
-require('flyboy.config').setup({ model = "gpt-3.5-turbo" })
+if vim.env.MACHINE == "work" then
+    require('flyboy.config').setup({
+        model = "gpt-4",
+        url = vim.env.AZURE_OPENAI_GPT4_ENDPOINT,
+        headers = {
+            Api_Key = vim.env.AZURE_OPENAI_GPT4_TOKEN,
+            Content_Type = "application/json"
+        }
+    })
+else
+    require('flyboy.config').setup({ model = "gpt-3.5-turbo" })
+end
