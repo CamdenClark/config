@@ -310,7 +310,7 @@ cmp.setup.cmdline('/', {
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-        { name = 'cmdline' },
+        { name = 'cmdline', keyword_pattern = [[Git]] },
         { name = 'path', options = { trailing_slash = true } }
     })
 })
