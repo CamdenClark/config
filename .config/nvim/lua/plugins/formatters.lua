@@ -70,9 +70,21 @@ return {
       "tpope/vim-rhubarb",
       "https://git.sr.ht/~willdurand/srht.vim",
     },
+    keys = {
+      { "<Leader>gb", "<cmd>GBrowse!<CR>" },
+      { "v", "<Leader>gb", "<cmd>'<, '>GBrowse!<CR>" },
+    },
   },
   {
     "Olical/conjure",
+    ft = { "clojure", "lua" },
+    config = function(_, _)
+      require("conjure.main").main()
+      require("conjure.mapping")["on-filetype"]()
+    end,
+    init = function()
+      vim.g["conjure#extract#tree_sitter#enabled"] = true
+    end,
     keys = {
       { "<leader>cw", "<cmd>ConjureShadowSelect<Space>", desc = "shadow-cljs select" },
     },
