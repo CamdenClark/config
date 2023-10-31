@@ -11,6 +11,13 @@ return {
     },
   },
   {
+    "nvim-telescope/telescope.nvim",
+    keys = {
+      -- change a keymap
+      { "<leader>p", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+    },
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
@@ -42,9 +49,32 @@ return {
   },
   {
     "CamdenClark/flyboy",
+    dir = "~/flyboy",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    keys = { { "<leader>ao", "<cmd>FlyboyOpen<cr>", desc = "Open Flyboy" } },
+    lazy = false,
+    keys = {
+      { "<leader>ao", "<cmd>FlyboyOpen<cr>", desc = "Open flyboy" },
+      { "<leader>as", "<cmd>FlyboySendMessage<cr>", desc = "Send message" },
+      { "<leader>av", "<cmd>FlyboyOpenVSplit<cr>", desc = "Open flyboy (vertical)" },
+      { "v", "<leader>av", "<cmd>FlyboyOpenVSplit visual<cr>", desc = "Open flyboy (vertical)" },
+    },
+    opts = {
+      model = "gpt-4",
+    },
+  },
+  {
+    "tpope/vim-fugitive",
+    dependencies = {
+      "tpope/vim-rhubarb",
+      "https://git.sr.ht/~willdurand/srht.vim",
+    },
+  },
+  {
+    "Olical/conjure",
+    keys = {
+      { "<leader>cw", "<cmd>ConjureShadowSelect<Space>", desc = "shadow-cljs select" },
+    },
   },
 }
