@@ -49,7 +49,7 @@ return {
   },
   {
     "CamdenClark/flyboy",
-    dir = "~/flyboy",
+    -- dir = "~/flyboy",
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
