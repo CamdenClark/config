@@ -52,7 +52,7 @@ export DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git httpie lein npm nvm ripgrep tmux vi-mode)
+plugins=(asdf git httpie lein npm nvm ripgrep tmux vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,3 +92,10 @@ esac
 [[ ! -r /home/camden/.opam/opam-init/init.zsh ]] || source /home/camden/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 export GODEBUG=asyncpreemptoff=1
 export TFENV_ARCH=amd64
+
+# bun completions
+[ -s "/home/camden/.bun/_bun" ] && source "/home/camden/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

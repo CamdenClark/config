@@ -65,6 +65,20 @@ return {
     },
   },
   {
+    "CamdenClark/carrier.nvim",
+    dir = "~/carrier.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    lazy = false,
+    keys = {
+      { "<leader>ae", "<cmd>CarrierEditSelection<cr>", desc = "Edit visual selection" },
+    },
+    opts = {
+      model = "gpt-3.5-turbo-1106",
+    },
+  },
+  {
     "tpope/vim-fugitive",
     dependencies = {
       "tpope/vim-rhubarb",
