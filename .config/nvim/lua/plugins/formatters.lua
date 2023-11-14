@@ -75,7 +75,7 @@ return {
       { "<leader>ae", "<cmd>CarrierEditSelection<cr>", desc = "Edit visual selection" },
     },
     opts = {
-      model = "gpt-3.5-turbo-1106",
+      model = "gpt-4-1106-preview",
     },
   },
   {
