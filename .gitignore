@@ -1,11 +1,55 @@
 # Ignore everything
-*
+**/*
 
-# But not these files and directories
+# Exclude directories that contain files to be included
+!.config/
+!bin/
+!nixos/
+!.tmuxp/
+
+# Ignore everything inside these directories
+.config/*/
+bin/*
+nixos/*
+.tmuxp/*
+
+!.config/alacritty
+!.config/i3
+!.config/nvim
+!.config/sioyek
+
+.config/alacritty/*
+.config/i3/*
+.config/sioyek/*
+.config/nvim/*
+
+!.config/nvim/lua
+
+.config/nvim/lua/*
+
+!.config/nvim/lua/config
+!.config/nvim/lua/plugins
+.config/nvim/lua/config/*
+.config/nvim/lua/plugins/*
+
+# Include specific files
 !.Xmodmap
 !.config/alacritty/alacritty.yml
 !.config/i3/config
-!.config/nvim/**/*
+!.config/nvim/.gitignore
+!.config/nvim/.neoconf.json
+!.config/nvim/LICENSE
+!.config/nvim/README.md
+!.config/nvim/init.lua
+!.config/nvim/lazy-lock.json
+!.config/nvim/lazyvim.json
+!.config/nvim/lua/config/autocmds.lua
+!.config/nvim/lua/config/keymaps.lua
+!.config/nvim/lua/config/lazy.lua
+!.config/nvim/lua/config/options.lua
+!.config/nvim/lua/plugins/example.lua
+!.config/nvim/lua/plugins/formatters.lua
+!.config/nvim/stylua.toml
 !.config/sioyek/prefs_user.config
 !.gitignore
 !.lein/profiles.clj
@@ -15,6 +59,7 @@
 !.tmuxp/web-ui.yaml
 !.yabairc
 !.zshrc
-!bin/**/*
+!bin/add-concept
+!bin/daily
+!bin/weekly
 !nixos/configuration.nix
-
