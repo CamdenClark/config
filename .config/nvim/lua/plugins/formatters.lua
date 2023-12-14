@@ -80,6 +80,7 @@ return {
   },
   {
     "tpope/vim-fugitive",
+    lazy = false,
     dependencies = {
       "tpope/vim-rhubarb",
       "https://git.sr.ht/~willdurand/srht.vim",

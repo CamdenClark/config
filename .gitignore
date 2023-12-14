@@ -1,1 +1,20 @@
+# Ignore everything
 *
+
+# But not these files and directories
+!.Xmodmap
+!.config/alacritty/alacritty.yml
+!.config/i3/config
+!.config/nvim/**/*
+!.config/sioyek/prefs_user.config
+!.gitignore
+!.lein/profiles.clj
+!.skhdrc
+!.tmuxp/notes.yaml
+!.tmuxp/storybook.yaml
+!.tmuxp/web-ui.yaml
+!.yabairc
+!.zshrc
+!bin/**/*
+!nixos/configuration.nix
+
