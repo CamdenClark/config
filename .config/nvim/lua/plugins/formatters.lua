@@ -54,12 +54,6 @@ return {
       "nvim-lua/plenary.nvim",
     },
     lazy = false,
-    keys = {
-      { "<leader>ao", "<cmd>FlyboyOpen<cr>", desc = "Open flyboy" },
-      { "<leader>as", "<cmd>FlyboySendMessage<cr>", desc = "Send message" },
-      { "<leader>av", "<cmd>FlyboyOpenVSplit<cr>", desc = "Open flyboy (vertical)" },
-      { "v", "<leader>av", "<cmd>FlyboyOpenVSplit visual<cr>", desc = "Open flyboy (vertical)" },
-    },
     opts = {
       model = "gpt-4",
     },
@@ -73,6 +67,10 @@ return {
     lazy = false,
     keys = {
       { "<leader>ae", "<cmd>CarrierEditSelection<cr>", desc = "Edit visual selection" },
+      { "<leader>ao", "<cmd>CarrierLogOpen<cr>", desc = "Open Carrier log" },
+      { "<leader>as", "<cmd>CarrierSendMessage<cr>", desc = "Send message" },
+      { "<leader>ak", "<cmd>CarrierStopMessage<cr>", desc = "Stop completion stream" },
+      { "<leader>aq", "<cmd>CarrierQuickMessage<cr>", desc = "Quick ask" },
     },
     opts = {
       model = "gpt-4-1106-preview",
