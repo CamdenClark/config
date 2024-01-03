@@ -100,4 +100,12 @@ export TFENV_ARCH=amd64
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-export OPENAI_API_KEY=$(cat ~/.openai)
+
+if [[ -e ~/.openai ]]; then 
+   export OPENAI_API_KEY=$(cat ~/.openai)
+fi
+
+if [[ -e ~/work.sh ]]; then 
+   source ~/work.sh
+fi
+

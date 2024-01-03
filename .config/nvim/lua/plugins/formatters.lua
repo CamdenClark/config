@@ -74,6 +74,11 @@ return {
     },
     opts = {
       model = "gpt-4-1106-preview",
+      url = vim.env.AZURE_OPENAI_GPT4_ENDPOINT,
+      headers = {
+        Api_Key = vim.env.AZURE_OPENAI_GPT4_TOKEN,
+        Content_Type = "application/json",
+      },
     },
   },
   {
