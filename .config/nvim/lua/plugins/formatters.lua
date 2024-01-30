@@ -5,7 +5,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         fish = { "fish_indent" },
-        sh = { "shfmt" },
+        --     sh = { "shfmt" },
         clojure = { "cljstyle" },
       },
     },
