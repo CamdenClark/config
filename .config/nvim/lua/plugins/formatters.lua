@@ -45,6 +45,9 @@ return {
         "vimdoc",
         "yaml",
       },
+      highlight = {
+        enable = false,
+      },
     },
   },
   {
