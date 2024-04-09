@@ -14,7 +14,12 @@ return {
     "nvim-telescope/telescope.nvim",
     keys = {
       -- change a keymap
-      { "<leader>p", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+      { "<leader>p", "<cmd>Telescope git_files<cr>", desc = "Find Files" },
+    },
+    opts = {
+      find_files = {
+        hidden = true,
+      },
     },
   },
   {
