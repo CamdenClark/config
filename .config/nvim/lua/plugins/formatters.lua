@@ -90,6 +90,20 @@ return {
     },
   },
   {
+    "robitx/gp.nvim",
+    config = function()
+      require("gp").setup({
+        openai_api_key = vim.env.AZURE_OPENAI_GPT4_TOKEN,
+        openai_api_endpoint = vim.env.AZURE_OPENAI_GPT4_ENDPOINT,
+      })
+
+      -- or setup with your own config (see Install > Configuration in Readme)
+      -- require("gp").setup(config)
+
+      -- shortcuts might be setup here (see Usage > Shortcuts in Readme)
+    end,
+  },
+  {
     "tpope/vim-fugitive",
     lazy = false,
     dependencies = {
