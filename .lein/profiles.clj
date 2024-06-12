@@ -1,7 +1,7 @@
 {:user
  {:dependencies [[reloaded.repl "0.2.4"]]
 
-  :plugins [[lein-monolith "1.8.0"]
+  :plugins [[lein-monolith "1.9.1"]
             [cider/cider-nrepl "0.24.0"]
             #_[amperity-connector/lein-template "MONOLITH-SNAPSHOT"]
             #_[amperity-service/lein-template "MONOLITH-SNAPSHOT"]
