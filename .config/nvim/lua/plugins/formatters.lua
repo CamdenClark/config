@@ -16,6 +16,21 @@ return {
     },
   },
   {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      enable_git_status = false,
+      window = {
+        position = "right",
+      },
+      filesystem = {
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = true,
+        },
+      },
+    },
+  },
+  {
     "nvim-telescope/telescope.nvim",
     keys = {
       -- change a keymap
