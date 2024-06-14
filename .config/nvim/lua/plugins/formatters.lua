@@ -134,9 +134,14 @@ return {
       "https://git.sr.ht/~willdurand/srht.vim",
     },
     keys = {
-      { "<Leader>gb", "<cmd>GBrowse!<CR>" },
-      { "v", "<Leader>gb", "<cmd>'<, '>GBrowse!<CR>" },
+      { "<Leader>gb", "<cmd>GBrowse!<CR>", "Copy github link to clipboard" },
+      { "v", "<Leader>gb", "<cmd>'<, '>GBrowse!<CR>", "Copy github link to clipboard" },
     },
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+
+    keys = {},
   },
   {
     "Olical/conjure",
