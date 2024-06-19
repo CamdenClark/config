@@ -62,6 +62,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 export EDITOR='nvim'
+export BROWSER='/usr/bin/firefox'
 export NOTES="$HOME/notes/camden"
 export MACHINE='work'
 # Compilation flags
