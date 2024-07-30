@@ -100,12 +100,17 @@ return {
       { "<leader>ak", "<cmd>CarrierStopMessage<cr>", desc = "Stop completion stream" },
       { "<leader>aq", "<cmd>CarrierQuickMessage<cr>", desc = "Quick ask" },
     },
-    opts = {
+    opts = vim.env.MACHINE == "work" and {
       model = "gpt-4o",
       url = vim.env.AZURE_OPENAI_GPT4_ENDPOINT,
       headers = {
         Api_Key = vim.env.AZURE_OPENAI_GPT4_TOKEN,
         Content_Type = "application/json",
+      },
+    } or {
+      provider = "deepseek",
+      config = {
+        api_key = vim.env.DEEPSEEK_API_KEY,
       },
     },
   },
