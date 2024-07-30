@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Calculate most recent Monday's date
 today=$(date +%Y-%m-%d)
@@ -7,10 +7,9 @@ today=$(date +%Y-%m-%d)
 filename="$NOTES/Daily/${today}.md"
 
 # Check if file doesn't exist
-if [ ! -f "$filename" ]
-then
-    # Copy the template to the new file
-    cp "$NOTES/Templates/Daily Check-in.md" "$filename"
+if [ ! -f "$filename" ]; then
+	# Copy the template to the new file
+	cp "$NOTES/Templates/Daily Check-in.md" "$filename"
 fi
 
 # Open the new file in neovim

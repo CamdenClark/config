@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Daily startup
+Comment=Open daily notes
+Exec=alacritty -e zsh -c 'source /home/camden/.zshrc && cd /home/camden && /home/camden/bin/daily; exec zsh -l'
+Icon=utilities-terminal
+Terminal=false
+Categories=Utility;
