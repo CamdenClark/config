@@ -94,11 +94,11 @@ return {
     },
     lazy = false,
     keys = {
-      { "<leader>ae", "<cmd>CarrierEditSelection<cr>", desc = "Edit visual selection" },
-      { "<leader>ao", "<cmd>CarrierLogOpen<cr>", desc = "Open Carrier log" },
-      { "<leader>as", "<cmd>CarrierSendMessage<cr>", desc = "Send message" },
-      { "<leader>ak", "<cmd>CarrierStopMessage<cr>", desc = "Stop completion stream" },
-      { "<leader>aq", "<cmd>CarrierQuickMessage<cr>", desc = "Quick ask" },
+      { "<leader>ae", "<cmd>CarrierSuggestEdit<cr>", desc = "Edit visual selection" },
+      { "<leader>as", "<cmd>CarrierSuggestAddition<cr>", desc = "Edit visual selection" },
+      { "<leader>ac", "<cmd>CarrierCancel<cr>", desc = "Cancel carrier suggestion" },
+      { "<leader>ar", "<cmd>CarrierReject<cr>", desc = "Reject carrier suggestion" },
+      { "<leader>aa", "<cmd>CarrierAccept<cr>", desc = "Accept carrier suggestion" },
     },
     opts = vim.env.MACHINE == "work" and {
       model = "gpt-4o",
