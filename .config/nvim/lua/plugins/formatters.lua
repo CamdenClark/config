@@ -94,18 +94,18 @@ return {
     },
     lazy = false,
     keys = {
-      { "<leader>ae", "<cmd>CarrierSuggestEdit<cr>", desc = "Edit visual selection" },
-      { "<leader>as", "<cmd>CarrierSuggestAddition<cr>", desc = "Edit visual selection" },
+      { "v", "<leader>ae", "<cmd>CarrierSuggestEdit<cr>", desc = "Edit visual selection" },
+      { "<leader>as", "<cmd>CarrierSuggestAddition<cr>", desc = "Suggest addition" },
       { "<leader>ac", "<cmd>CarrierCancel<cr>", desc = "Cancel carrier suggestion" },
       { "<leader>ar", "<cmd>CarrierReject<cr>", desc = "Reject carrier suggestion" },
       { "<leader>aa", "<cmd>CarrierAccept<cr>", desc = "Accept carrier suggestion" },
     },
     opts = vim.env.MACHINE == "work" and {
-      model = "gpt-4o",
-      url = vim.env.AZURE_OPENAI_GPT4_ENDPOINT,
-      headers = {
-        Api_Key = vim.env.AZURE_OPENAI_GPT4_TOKEN,
-        Content_Type = "application/json",
+      provider = "azure",
+      config = {
+        api_key = vim.env.AZURE_OPENAI_GPT4_TOKEN,
+        endpoint = vim.env.AZURE_OPENAI_GPT4_ENDPOINT,
+        deployment = "gpt-4o",
       },
     } or {
       provider = "deepseek",
@@ -142,11 +142,6 @@ return {
       { "<Leader>gb", "<cmd>GBrowse!<CR>", "Copy github link to clipboard" },
       { "v", "<Leader>gb", "<cmd>'<, '>GBrowse!<CR>", "Copy github link to clipboard" },
     },
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-
-    keys = {},
   },
   {
     "Olical/conjure",
