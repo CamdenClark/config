@@ -145,7 +145,7 @@ return {
   },
   {
     "Olical/conjure",
-    ft = { "clojure", "lua" },
+    ft = { "clojure", "lua", "python" },
     config = function(_, _)
       require("conjure.main").main()
       require("conjure.mapping")["on-filetype"]()
