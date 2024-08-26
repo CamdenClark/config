@@ -76,17 +76,6 @@ return {
     },
   },
   {
-    "CamdenClark/flyboy",
-    -- dir = "~/flyboy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    lazy = false,
-    opts = {
-      model = "gpt-4",
-    },
-  },
-  {
     "CamdenClark/carrier.nvim",
     dir = "~/carrier.nvim",
     dependencies = {
@@ -104,7 +93,7 @@ return {
       provider = "azure",
       config = {
         api_key = vim.env.AZURE_OPENAI_GPT4_TOKEN,
-        endpoint = vim.env.AZURE_OPENAI_GPT4_ENDPOINT,
+        endpoint = vim.env.AZURE_API_BASE,
         deployment = "gpt-4o",
       },
     } or {
@@ -113,23 +102,6 @@ return {
         api_key = vim.env.DEEPSEEK_API_KEY,
       },
     },
-  },
-  {
-    "robitx/gp.nvim",
-    config = function()
-      if vim.env.MACHINE == "work" then
-        require("gp").setup({
-          openai_api_key = vim.env.AZURE_OPENAI_GPT4_TOKEN,
-          openai_api_endpoint = vim.env.AZURE_OPENAI_GPT4_ENDPOINT,
-        })
-      else
-        require("gp").setup()
-      end
-
-      -- or setup with your own config (see Install > Configuration in Readme)
-
-      -- shortcuts might be setup here (see Usage > Shortcuts in Readme)
-    end,
   },
   {
     "tpope/vim-fugitive",
