@@ -76,7 +76,6 @@ export MACHINE='home'
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias lg="lazygit"
-alias python="python3"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
