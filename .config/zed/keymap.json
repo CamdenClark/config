@@ -31,7 +31,7 @@
       "space w p": ["workspace::ActivatePaneInDirection", "Left"],
       "space q k": "zed::OpenKeymap",
       "space q c": "zed::OpenSettings",
-      "space g g": ["task::Spawn", "lazygit"]
+      "space g g": ["task::Spawn", { "task_name": "lazygit" }]
 
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
