@@ -19,7 +19,7 @@
     }
   },
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "Editor && vim_mode == normal || ProjectPanel",
     "bindings": {
       "space f": "workspace::NewSearch",
       "space p": "file_finder::Toggle",
@@ -28,17 +28,22 @@
       "H": "pane::ActivatePrevItem",
       "L": "pane::ActivateNextItem",
       "space w n": ["workspace::ActivatePaneInDirection", "Right"],
-      "space w p": ["workspace::ActivatePaneInDirection", "Left"]
+      "space w p": ["workspace::ActivatePaneInDirection", "Left"],
+      "space q k": "zed::OpenKeymap",
+      "space q c": "zed::OpenSettings",
+      "space g g": ["task::Spawn", "lazygit"]
 
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
   },
   {
-    "context": "EmptyPane || SharedScreen",
+    "context": "Editor && vim_mode == visual",
     "bindings": {
-      "space f": "file_finder::Toggle"
+      "space a": "assistant::InlineAssist"
+      // "j k": ["workspace::SendKeystrokes", "escape"]
     }
-  },
+  }
+  /*
   {
     "context": "Dock",
     "bindings": {
@@ -46,4 +51,5 @@
       "space w p": ["workspace::ActivatePaneInDirection", "Left"]
     }
   }
+  */
 ]
