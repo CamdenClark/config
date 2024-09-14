@@ -18,8 +18,6 @@
     "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "never",
-    "shell": {
-      "program": "zsh"
-    }
+    "shell": "system"
   }
 ]
