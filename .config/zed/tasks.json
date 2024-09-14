@@ -1,0 +1,25 @@
+// Static tasks configuration.
+//
+// Example:
+[
+  {
+    "label": "litellm",
+    "command": "litellm --model azure/gpt-4o",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+    "hide": "never",
+    "shell": "system"
+  },
+  {
+    "label": "lazygit",
+    "command": "lazygit",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "always",
+    "hide": "never",
+    "shell": {
+      "program": "zsh"
+    }
+  }
+]

@@ -9,12 +9,23 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-5-sonnet-20240620"
+      "provider": "openai",
+      "model": "gpt-4o-foo"
     },
     "version": "2"
   },
   "cursor_blink": false,
+  "languages": {
+    "Clojure": {
+      "tab_size": 2,
+      "formatter": {
+        "external": {
+          "command": "cljstyle",
+          "arguments": ["pipe"]
+        }
+      }
+    }
+  },
   "relative_line_numbers": true,
   "scrollbar": { "show": "never" },
   "scroll_beyond_last_line": "off",
@@ -30,5 +41,12 @@
     "mode": "system",
     "light": "One Light",
     "dark": "Andromeda"
+  },
+  "language_models": {
+    "openai": {
+      "version": "1",
+      "api_url": "http://localhost:4000",
+      "available_models": [{ "name": "gpt-4o-foo", "max_tokens": 128000 }]
+    }
   }
 }

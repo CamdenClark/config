@@ -53,7 +53,7 @@ export DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf git httpie lein npm nvm tmux)
+plugins=(asdf git httpie lein npm nvm)
 
 source $ZSH/oh-my-zsh.sh
 
