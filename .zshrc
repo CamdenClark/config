@@ -1,3 +1,7 @@
+# Uncomment to profile -- this was exceptionally helpful!
+# Also uncomment the zprof line at the end of the file
+# zmodload zsh/zprof
+
 export PATH=$HOME/anaconda3/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
@@ -53,7 +57,7 @@ export DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(asdf git httpie lein npm nvm)
+plugins=(asdf git httpie lein npm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -79,9 +83,9 @@ alias lg="lazygit"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 alias luamake=/luamake
 
 # pnpm
@@ -104,17 +108,17 @@ export TFENV_ARCH=amd64
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-if [[ -e ~/.openai ]]; then 
+if [[ -e ~/.openai ]]; then
    export OPENAI_API_KEY=$(cat ~/.openai)
 fi
 
-if [[ -e ~/work.sh ]]; then 
+if [[ -e ~/work.sh ]]; then
    source ~/work.sh
 fi
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion  
 
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-#if [[ -e ~/home.sh ]]; then 
+#if [[ -e ~/home.sh ]]; then
 #fi
+
+# Uncomment to profile
+# zprof
