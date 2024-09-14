@@ -17,11 +17,13 @@ nixos/*
 !.config/i3
 !.config/nvim
 !.config/sioyek
+!.config/zed
 
 .config/alacritty/*
 .config/i3/*
 .config/sioyek/*
 .config/nvim/*
+.config/zed/*
 
 !.config/nvim/lua
 
@@ -51,6 +53,9 @@ nixos/*
 !.config/nvim/lua/plugins/formatters.lua
 !.config/nvim/stylua.toml
 !.config/sioyek/prefs_user.config
+!.config/zed/keymap.json
+!.config/zed/settings.json
+!.config/zed/tasks.json
 !.gitignore
 !.lein/profiles.clj
 !.skhdrc
