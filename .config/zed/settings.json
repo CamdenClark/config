@@ -9,12 +9,21 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "openai",
-      "model": "gpt-4o-foo"
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20240620"
     },
     "version": "2"
   },
   "cursor_blink": false,
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python": {
+          "pythonPath": ".venv/bin/python"
+        }
+      }
+    }
+  },
   "languages": {
     "Clojure": {
       "tab_size": 2,
@@ -40,7 +49,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Andromeda"
+    "dark": "Catppuccin Latte"
   },
   "language_models": {
     "openai": {
