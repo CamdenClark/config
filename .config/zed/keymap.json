@@ -33,7 +33,11 @@
       "space q c": "zed::OpenSettings",
       "space g g": ["task::Spawn", { "task_name": "lazygit" }],
       "space w t": "workspace::NewTerminal",
-      ", c a": "editor::ToggleCodeActions"
+      "space n": "workspace::NewFile",
+      "space b d": "pane::CloseActiveItem",
+      ", c a": "editor::ToggleCodeActions",
+      ", e e": "repl::Run",
+      ", e c": "repl::ClearOutputs"
 
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
@@ -41,7 +45,8 @@
   {
     "context": "Editor && vim_mode == visual",
     "bindings": {
-      "space a": "assistant::InlineAssist"
+      "space a": "assistant::InlineAssist",
+      ", e": "repl::RunInPlace"
       // "j k": ["workspace::SendKeystrokes", "escape"]
     }
   }
