@@ -1,7 +1,7 @@
 {
   "extras": [
     "lazyvim.plugins.extras.test.core",
-    "lazyvim.plugins.extras.coding.copilot",
+    "lazyvim.plugins.extras.ai.copilot",
     "lazyvim.plugins.extras.lang.elixir",
     "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.python",
@@ -9,7 +9,7 @@
     "lazyvim.plugins.extras.lang.typescript"
   ],
   "news": {
-    "NEWS.md": "6520"
+    "NEWS.md": "10960"
   },
-  "version": 6
+  "version": 7
 }

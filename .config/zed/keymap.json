@@ -29,17 +29,28 @@
       "L": "pane::ActivateNextItem",
       "space w n": ["workspace::ActivatePaneInDirection", "Right"],
       "space w p": ["workspace::ActivatePaneInDirection", "Left"],
-      "space q k": "zed::OpenKeymap",
-      "space q c": "zed::OpenSettings",
-      "space g g": ["task::Spawn", { "task_name": "lazygit" }],
-      "space w t": "workspace::NewTerminal",
+      "space t": "workspace::NewTerminal",
       "space n": "workspace::NewFile",
       "space b d": "pane::CloseActiveItem",
-      ", c a": "editor::ToggleCodeActions",
-      ", e e": "repl::Run",
-      ", e c": "repl::ClearOutputs"
 
-      // "j k": ["workspace::SendKeystrokes", "escape"]
+      ", c a": "editor::ToggleCodeActions",
+
+      // REPL
+      ", e e": "repl::Run",
+      ", e c": "repl::ClearOutputs",
+      ", e r": "repl::Restart",
+
+      ", t a": ["task::Spawn", { "task_name": "test all" }],
+      ", t t": ["task::Spawn", { "task_name": "test file" }],
+
+      // Git
+      "space g b": "editor::ToggleGitBlame",
+      "space g g": ["task::Spawn", { "task_name": "lazygit" }],
+
+      // Meta items...
+      "space q k": "zed::OpenKeymap",
+      "space q c": "zed::OpenSettings",
+      "space q t": "zed::OpenTasks"
     }
   },
   {
@@ -47,7 +58,6 @@
     "bindings": {
       "space a": "assistant::InlineAssist",
       ", e": "repl::RunInPlace"
-      // "j k": ["workspace::SendKeystrokes", "escape"]
     }
   }
   /*

@@ -9,8 +9,8 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-5-sonnet-20240620"
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
     },
     "version": "2"
   },
@@ -25,6 +25,9 @@
     }
   },
   "languages": {
+    "Markdown": {
+      "show_inline_completions": false
+    },
     "Clojure": {
       "tab_size": 2,
       "formatter": {
@@ -36,6 +39,7 @@
     }
   },
   "relative_line_numbers": true,
+  "soft_wrap": "bounded",
   "scrollbar": { "show": "never" },
   "scroll_beyond_last_line": "off",
   "vim_mode": true,

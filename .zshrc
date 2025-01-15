@@ -120,6 +120,9 @@ fi
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 #if [[ -e ~/home.sh ]]; then
 #fi
-
+ulimit -n 524288
 # Uncomment to profile
 # zprof
+
+# Added by Windsurf
+export PATH="/Users/camdenclark/.codeium/windsurf/bin:$PATH"
