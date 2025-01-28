@@ -31,15 +31,10 @@ return {
     },
   },
   {
-    "nvim-telescope/telescope.nvim",
+    "fzf-lua",
     keys = {
       -- change a keymap
-      { "<leader>p", "<cmd>Telescope git_files<cr>", desc = "Find Files" },
-    },
-    opts = {
-      find_files = {
-        hidden = true,
-      },
+      { "<leader>p", LazyVim.pick("files"), desc = "Find Files" },
     },
   },
   {
