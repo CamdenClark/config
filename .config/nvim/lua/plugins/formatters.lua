@@ -34,7 +34,7 @@ return {
     "fzf-lua",
     keys = {
       -- change a keymap
-      { "<leader>p", LazyVim.pick("files"), desc = "Find Files" },
+      { "<leader>p", "<cmd>FzfLua git_files<cr>", desc = "Find Files (git)" },
     },
   },
   {
@@ -121,7 +121,7 @@ return {
       vim.g["conjure#extract#tree_sitter#enabled"] = true
     end,
     keys = {
-      { "<leader>cw", "<cmd>ConjureShadowSelect<Space>", desc = "shadow-cljs select" },
+      { "<LocalLeader>cw", "<cmd>ConjureShadowSelect<Space>", desc = "shadow-cljs select" },
     },
   },
 }
