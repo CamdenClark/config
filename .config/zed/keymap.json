@@ -13,9 +13,9 @@
     }
   },
   {
-    "context": "Editor",
+    "context": "Editor && vim_mode == insert",
     "bindings": {
-      // "j k": ["workspace::SendKeystrokes", "escape"]
+      "j k": ["workspace::SendKeystrokes", "escape"]
     }
   },
   {
@@ -28,6 +28,8 @@
       "H": "pane::ActivatePrevItem",
       "L": "pane::ActivateNextItem",
       "space w n": ["workspace::ActivatePaneInDirection", "Right"],
+      "space i": "assistant::InlineAssist",
+      "space s": "assistant::Assist",
       "space w p": ["workspace::ActivatePaneInDirection", "Left"],
       "space t": "workspace::NewTerminal",
       "space n": "workspace::NewFile",
@@ -50,7 +52,8 @@
       // Meta items...
       "space q k": "zed::OpenKeymap",
       "space q c": "zed::OpenSettings",
-      "space q t": "zed::OpenTasks"
+      "space q t": "zed::OpenTasks",
+      "space q p": "assistant::DeployPromptLibrary"
     }
   },
   {
