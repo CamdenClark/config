@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Get the remote URL
+REMOTE_URL=$(git config --get remote.origin.url)
+
+# Convert SSH URL to HTTPS if needed
+HTTPS_URL=$(echo $REMOTE_URL | sed 's/git@github.com:/https:\/\/github.com\//')
+HTTPS_URL=$(echo $HTTPS_URL | sed 's/\.git$//')
+
+# Get current branch
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Construct the GitHub URL with line number
+GITHUB_URL="$HTTPS_URL/blob/$BRANCH/$ZED_RELATIVE_FILE#L$((ZED_ROW-1))"
+
+# Copy to clipboard (using pbcopy for macOS or xclip for Linux)
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo -n "$GITHUB_URL" | pbcopy
+else
+    echo -n "$GITHUB_URL" | xclip -selection clipboard
+fi
+
+echo "Copied to clipboard: $GITHUB_URL"

@@ -46,7 +46,7 @@
       ", t t": ["task::Spawn", { "task_name": "test file" }],
 
       // Git
-      "space g b": "editor::ToggleGitBlame",
+      "space g b": ["task::Spawn", { "task_name": "gbrowse" }],
       "space g g": ["task::Spawn", { "task_name": "lazygit" }],
 
       // Meta items...

@@ -19,5 +19,14 @@
     "reveal": "always",
     "hide": "on_success",
     "shell": "system"
+  },
+  {
+    "label": "gbrowse",
+    "command": "~/.config/zed/gbrowse",
+    "use_new_terminal": false,
+    "allow_concurrent_runs": true,
+    "reveal": "always",
+    "hide": "always",
+    "shell": "system"
   }
 ]
