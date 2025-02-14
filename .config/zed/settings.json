@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "assistant": {
     "default_model": {
       "provider": "zed.dev",
@@ -26,7 +29,7 @@
   },
   "languages": {
     "Markdown": {
-      "show_inline_completions": false
+      "show_edit_predictions": false
     },
     "Clojure": {
       "tab_size": 2,
