@@ -81,6 +81,7 @@ export MACHINE='home'
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
 alias lg="lazygit"
+alias claude="ccode"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 
