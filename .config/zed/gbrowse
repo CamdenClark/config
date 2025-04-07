@@ -10,7 +10,7 @@ HTTPS_URL=$(echo $HTTPS_URL | sed 's/\.git$//')
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 # Construct the GitHub URL with line number
-GITHUB_URL="$HTTPS_URL/blob/$BRANCH/$ZED_RELATIVE_FILE#L$((ZED_ROW-1))"
+GITHUB_URL="$HTTPS_URL/blob/$BRANCH/$ZED_RELATIVE_FILE#L$((ZED_ROW))"
 
 # Copy to clipboard (using pbcopy for macOS or xclip for Linux)
 if [[ "$OSTYPE" == "darwin"* ]]; then
