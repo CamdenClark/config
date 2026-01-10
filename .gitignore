@@ -56,7 +56,6 @@ nixos/*
 !.config/zed/keymap.json
 !.config/zed/settings.json
 !.config/opencode/opencode.json
-!opencode.json
 !.config/zed/tasks.json
 !.gitignore
 !.lein/profiles.clj
