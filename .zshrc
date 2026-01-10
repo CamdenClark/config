@@ -126,3 +126,4 @@ ulimit -n 524288
 
 # Added by Windsurf
 export PATH="/Users/camdenclark/.codeium/windsurf/bin:$PATH"
+. "/Users/camdenclark/.deno/env"
