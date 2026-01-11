@@ -127,3 +127,4 @@ ulimit -n 524288
 # Added by Windsurf
 export PATH="/Users/camdenclark/.codeium/windsurf/bin:$PATH"
 . "/Users/camdenclark/.deno/env"
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
