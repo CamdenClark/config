@@ -1,6 +1,0 @@
-# /bin/bash
-
-cd "$NOTES/Concepts";
-mkdir -p "$1/$2";
-mkdir -p "$1/$2/Articles";
-touch "$1/$2/$2.md"

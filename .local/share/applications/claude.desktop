@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=Claude 3.5 Sonnet
-Comment=Talk to Claude
-Exec=alacritty -e zsh -c 'source /home/camden/.zshrc && llm chat -m claude-3.5-sonnet; exec zsh -l'
-Icon=utilities-terminal
-Terminal=false
-Categories=Utility;
