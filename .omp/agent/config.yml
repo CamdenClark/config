@@ -1,0 +1,12 @@
+modelRoles:
+  default: openai-codex/gpt-6.1-sol:high
+symbolPreset: nerd
+composer:
+  shape: band
+theme:
+  light: light
+setupVersion: 2
+spelling:
+  autocomplete: "off"
+dev:
+  autoqaConsent: granted
