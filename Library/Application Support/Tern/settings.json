@@ -1,6 +1,7 @@
 {
   "theme_light": "light",
   "link_target": "Browser",
+  "tabs": "Vertical",
   "prompt_style": "classic",
   "prefs_width": 719
 }
