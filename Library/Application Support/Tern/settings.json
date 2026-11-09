@@ -1,6 +1,6 @@
 {
+  "theme_light": "light",
   "link_target": "Browser",
-  "status_bar": true,
   "prompt_style": "classic",
   "prefs_width": 719
 }

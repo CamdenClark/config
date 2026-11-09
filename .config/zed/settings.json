@@ -7,33 +7,43 @@
 // custom settings, run `zed: open default settings` from the
 // command palette
 {
-  "cli_default_open_behavior": "existing_window",
+  "cli_default_open_behavior": "new_window",
+  "agent_servers": {
+    "codex-acp": {
+      "type": "registry"
+    }
+  },
+  "context_servers": {
+    "surfboard": {
+      "enabled": true,
+      "url": "https://app.surfboard.ai/mcp/"
+    }
+  },
   "project_panel": {
     "dock": "left"
   },
   "outline_panel": {
-    "dock": "left"
+    "dock": "right"
   },
   "collaboration_panel": {
-    "dock": "left"
-  },
-  "agent": {
-    "dock": "right",
-    "favorite_models": [],
-    "model_parameters": []
+    "dock": "right"
   },
   "git_panel": {
-    "dock": "left"
+    "dock": "right"
   },
-  "features": {
-    "edit_prediction_provider": "zed"
+  "edit_predictions": {
+    "provider": "zed"
   },
-  "assistant": {
+  "agent": {
+    "dock": "left",
+    "favorite_models": [],
+    "model_parameters": [],
     "default_model": {
+      "effort": "high",
+      "enable_thinking": true,
       "provider": "zed.dev",
-      "model": "claude-3-7-sonnet-latest"
+      "model": "claude-sonnet-4-6"
     },
-    "version": "2"
   },
   "cursor_blink": false,
   "lsp": {
@@ -59,7 +69,7 @@
       }
     }
   },
-  "relative_line_numbers": true,
+  "relative_line_numbers": "enabled",
   "soft_wrap": "bounded",
   "scrollbar": { "show": "never" },
   "scroll_beyond_last_line": "off",
@@ -78,7 +88,6 @@
   },
   "language_models": {
     "openai": {
-      "version": "1",
       "api_url": "http://localhost:4000",
       "available_models": [{ "name": "gpt-4o-foo", "max_tokens": 128000 }]
     }
