@@ -10,3 +10,5 @@ spelling:
   autocomplete: "off"
 dev:
   autoqaConsent: granted
+codexResets:
+  autoRedeem: "yes"
